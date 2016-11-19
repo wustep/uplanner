@@ -5,7 +5,7 @@ import sql from "./sql.js";
 const app = express();
 const config = require('../config.json');
 
-/* SSH2 tunnel wasn't working, using PuTTY instead, may need this stuff later though
+/* SSH2 tunnel wasn't working, using PuTTY instead, may need this stuff later though 
 
 var Client = require('ssh2').Client;
 var conn = new Client();
@@ -29,14 +29,14 @@ conn.on('ready', function() {
 });
 */
 
-sql.connectDB();
-
 app.set('port', (process.env.PORT || 3001));
+sql.connectDB();
+app.use('/api', require('./api_routes'));
 
 if (process.env.NODE_ENV === 'production') { // Express only serves static assets in production
   app.use(express.static('../client/build'));
 }
 
 app.listen(app.get('port'), () => {
-  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+  console.log(`Server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });

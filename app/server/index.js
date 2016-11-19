@@ -5,6 +5,8 @@ import sql from "./sql.js";
 const app = express();
 const config = require('../config.json');
 
+/* SSH2 tunnel wasn't working, using PuTTY instead, may need this stuff later though
+
 var Client = require('ssh2').Client;
 var conn = new Client();
 
@@ -25,6 +27,9 @@ conn.on('ready', function() {
 	//privateKey: require('fs').readFileSync(config.ssh.privateKey),
 	//passphrase: config.ssh.passphrase
 });
+*/
+
+sql.connectDB();
 
 app.set('port', (process.env.PORT || 3001));
 

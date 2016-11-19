@@ -8,7 +8,7 @@ import './css/App.css';
 
 ReactDOM.render((
 	<Router history={browserHistory}>
-		<Route path="/" component={App}/>
 		<Route path="/scraper" component={Scraper}/>
+		<Route path="*" component={App}/>
 	</Router>
 ), document.getElementById('root'));

@@ -30,8 +30,5 @@
     "start:client": "nf start client=1",
     "start:prod": "NODE_ENV=production nf start server=1",
     "start": "nf start -p 3001"
-  },
-  "devDependencies": {
-    "babel": "^6.5.2"
   }
 }

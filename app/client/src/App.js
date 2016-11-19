@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './images/logo.svg';
+import './css/App.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -9,9 +9,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RegisterButton from './RegisterButton';
-import InterestedButton from './InterestedButton';
-import MasterGrid from './MasterGrid';
+import RegisterButton from './components/RegisterButton';
+import InterestedButton from './components/InterestedButton';
+import MasterGrid from './components/MasterGrid';
 
 class LandingPage extends Component {
   render() {

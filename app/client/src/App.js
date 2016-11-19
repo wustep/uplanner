@@ -13,7 +13,7 @@ import RegisterButton from './components/RegisterButton';
 import InterestedButton from './components/InterestedButton';
 import MasterGrid from './components/MasterGrid';
 
-class LandingPage extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">
@@ -43,4 +43,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default App;

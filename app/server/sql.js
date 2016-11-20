@@ -24,6 +24,13 @@ module.exports = {
 			callback(false, results);
 		});
 	},
+	searchEvents: function(query, callback) { // probably a better way to repeat this
+		query = "%" + query + "%";
+		db.query("SELECT * FROM events WHERE `name` LIKE ? OR `location` LIKE ? OR `desc` LIKE ?", [query, query, query], function(err, results) {
+			if (err) { console.log(err); callback(true); return; }
+			callback(false, results);
+		});
+	},
 	getBigTags: function(parentTag = 0, callback) {
 		// Get big categories
 		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", [parentTag], function (err, results) {

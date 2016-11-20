@@ -59,10 +59,10 @@ router.get('/events', (req, res) => {
 });
 
 // Get events based on preferences, use algorithim, TBD
-router.get('/events/:prefs', (req, res) => {
-	let {prefs} = req.params;
-	console.log(prefs);
-	sql.getEvents(null, function(err, results) {
+router.get('/events/:query', (req, res) => {
+	let {query} = req.params;
+	console.log(query);
+	sql.searchEvents(query, function(err, results) {
 		res.send(results);
 	});
 });

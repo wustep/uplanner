@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 var fetch = require('node-fetch')
-import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './events.css';
 import moment from 'moment';
+import Search from './Search';
 
 function getEvents() {
 	return fetch("http://localhost:3001/api/events").then(function(response) { return response.json(); }).then(function(json) {
@@ -30,12 +31,12 @@ class Events extends Component {
 			var out = [];
 			for (var i = 0; i < data.length; i++) {
 				var name = data[i]["name"];
-				if (name != "null") {
+				if (name !== "null") {
 					//var desc = data[i]["desc"] != "null" ? "<span class='eventDescription'>" + data[i]["desc"]+"</span><br/>" : "";
 					//out = out + "<div class='event'><span class='eventTitle'>" + name + "</span><br/><span class='eventInfo'>"+data[i]["location"]+"</span><br/><span class='eventDesc'>"+ desc + "</span></div><hr/>";
-					var expand = data[i]["desc"] != "null";
-					var sub = data[i]["location"] != "null" ? data[i]["location"] : "";
-					sub = (data[i]["time_start"] != null ? parseSingleDate(data[i]["time_start"]) : "") + (sub.length > 0 ? ", " : "") + sub;
+					var expand = data[i]["desc"] !== "null";
+					var sub = data[i]["location"] !== "null" ? data[i]["location"] : "";
+					sub = (data[i]["time_start"] !== "null" ? parseSingleDate(data[i]["time_start"]) : "") + (sub.length > 0 ? ", " : "") + sub;
 					out.push( 
 					(<MuiThemeProvider><Card className="event">
 						<CardHeader className="eventTitle" titleStyle={{"font-weight": "bold"}} title={name} subtitle={sub} actAsExpander={expand} showExpandableButton={expand}/>
@@ -49,7 +50,7 @@ class Events extends Component {
 	}
 	render() {
 		return(
-			<div className="Events">{this.state.events}</div>
+			<div className="Events"><Search/>{this.state.events}</div>
 		);
 	}
 }

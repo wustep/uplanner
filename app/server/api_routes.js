@@ -61,8 +61,7 @@ router.get('/events', (req, res) => {
 // Get events based on preferences, use algorithim, TBD
 router.get('/events/:query', (req, res) => {
 	let {query} = req.params;
-	console.log(query);
-	sql.searchEvents(query, function(err, results) {
+	sql.searchEvents(query.toLowerCase(), function(err, results) {
 		res.send(results);
 	});
 });

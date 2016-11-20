@@ -25,8 +25,8 @@ module.exports = {
 		});
 	},
 	searchEvents: function(query, callback) { // probably a better way to repeat this
-		query = "%" + query + "%";
-		db.query("SELECT * FROM events WHERE `name` LIKE ? OR `location` LIKE ? OR `desc` LIKE ?", [query, query, query], function(err, results) {
+		var search = '%' + query.toLowerCase() + '%';
+		db.query("SELECT * FROM events WHERE LOWER(`name`) LIKE ? OR LOWER(`location`) LIKE ? OR LOWER(`desc`) LIKE ? LIMIT 20", [search, search, search], function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});

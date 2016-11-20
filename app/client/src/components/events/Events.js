@@ -46,7 +46,8 @@ class Events extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			events: []
+			events: [],
+			repopulate: false
 		};
 		var self = this;
 		getEvents().then(function(data) {
@@ -54,20 +55,18 @@ class Events extends Component {
 		});
 	}
 	repopulateEvents(query) {
-		var self = this;
-		getEvents(query).then(function(data) {
-			self.setState({events: parseEvents(data)});
-		});
+		
 	}
 	render() {
-		console.log(this.props.limit);
+		//console.log(this.state.repopulate);
+		//console.log(this.props.limit);
 		if (this.props.limit) {
 		return(
 				<div className="Events"><Search/>{this.state.events.slice(0,3)}</div>
 			);
 		} else {
 			return (
-				<div className="Events"><Search/>{this.state.events}</div>
+				<div className="Events"><Search repopulate={this.state.repopulate}/>{this.state.events}</div>
 			);
 		}
 	}

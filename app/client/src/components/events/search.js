@@ -13,8 +13,8 @@ class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dataSource: [],
-			repopulateEvents: false
+			dataSource: []
+			//repopulate: props.repopulate;
 		};
 	}
 	handleUpdateInput = (value) => {
@@ -31,8 +31,7 @@ class Search extends Component {
 		});
 	}
 	handleSubmit() {
-		console.log("Submit!");
-		this.prop.repopulateEvents;
+		//this.state.repopulate = true;
 	}
 	render() {
 		return(

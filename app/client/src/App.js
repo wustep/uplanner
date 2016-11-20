@@ -40,7 +40,7 @@ class App extends Component {
         return (
           <div className="App">
                 <div className="App-header" id='topHalf'>
-				<img className="App-banner" src={LogoBanner}/><br/>
+				<a href="http://localhost:3000"><img className="App-banner" src={LogoBanner}/></a><br/>
                 <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />

@@ -1,11 +1,73 @@
 import React from 'react';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
-const RegisterButton = () => (
-    <div>
-  <RaisedButton label="Register"/>&#160;&#160;&#160;&#160;
-  <RaisedButton label="Log In"/>
-    </div>
-);
+const styles = {
+  radioButton: {
+    marginTop: 16,
+  },
+};
 
-export default RegisterButton;
+/**
+ * Dialog content can be scrollable.
+ */
+export default class DialogExampleScrollable extends React.Component {
+  state = {
+    open: false,
+  };
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+state = {
+    value: 1,
+  };
+
+  handleChange = (event, index, value) => this.setState({value});
+    
+  render() {
+    const actions = [
+      
+    ];
+
+
+    return (
+      <div>
+        <RaisedButton label="Register/Log in" onTouchTap={this.handleOpen} />
+        <Dialog
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+          autoScrollBodyContent={true}
+        >
+        <div id='left_side'><h1 id='register_title'>Register</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Verify Password" floatingLabelFixed={true} /><br /><SelectField
+          floatingLabelText="Type of User"
+          value={this.state.value}
+          onChange={this.handleChange}
+        autoWidth={true}
+    
+        >
+        <MenuItem value={1} primaryText="" />  
+        <MenuItem value={2} primaryText="Undergraduate Student" />
+          <MenuItem value={3} primaryText="Graduate Student" />
+          <MenuItem value={4} primaryText="Staff/Faculty Member" />
+          <MenuItem value={5} primaryText="Other" />
+        </SelectField><br /><RaisedButton id='signupButton' label="Register" /></div>
+        <div id='right_side'><h1 id='register_title'>Log In</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" floatingLabelFixed={true} /><br /><RaisedButton id='signupButton' label="Log in" /></div>
+        
+        </Dialog>
+        
+      </div>
+    );
+  }
+}

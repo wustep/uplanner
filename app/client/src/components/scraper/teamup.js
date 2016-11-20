@@ -57,7 +57,22 @@ module.exports = {
 		xhr.send();
 	},
 	
-	generateSQL: function(data) {
-		return data;
+	generateSQL: function(data, retrieved) {
+		var out = "INSERT INTO events (name, location, desc, retrieved, time_start, time_end)\n";
+		if (data["events"] !== null) {
+			var events = data["events"];
+			for (var i = 0; i < events.length; i++) {
+				var cal = events[i]["subcalendar_id"];
+				var id = events[i]["id"];
+				var title = events[i]["title"];
+				var start_dt = events[i]["start_dt"].substring(0,19);
+				var end_dt = events[i]["end_dt"].substring(0,19);
+				var place = events[i]["location"];
+				var desc = events[i]["notes"];
+				var desc2 = String(desc).replace(/\<p\>/g,"").replace(/\<\/p\>/g,"").replace(/\n/g,"<br>");
+				out = out + "(" + title + "," + place + "," + "," + desc2 + "," + retrieved + "," + start_dt + "," + end_dt + ")\n";
+			}
+		}
+		return out;
 	}
 }

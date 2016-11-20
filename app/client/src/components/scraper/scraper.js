@@ -14,20 +14,24 @@ class Scraper extends Component {
 		this.handleLinkChange = this.handleLinkChange.bind(this);
 		this.state = {
 		  output: "",
-		  url: ""
+		  url: "",
+		  showOutput: false
 		};
 	}
 	populateOutput(e) {
+		this.setState({ showOutput: true });
 		if (this.state.url.includes("teamup")) {
 			var startDate = "2016-11-19";
 			var endDate = "2016-11-26";
 			var that = this;
 			TeamUp.makeCorsRequest('https://api.teamup.com/kse89a84dcb543ed5e/events?startDate='+startDate+'&endDate='+endDate, function(res) {
-				var out = TeamUp.generateSQL(JSON.parse(res.responseText));
+				var out = TeamUp.generateSQL(JSON.parse(res.responseText), that.state.url);
 				console.log(out);
 				console.log(JSON.stringify(out));
 				return that.setState({ output: JSON.stringify(out) });
 			});
+		} else {
+			this.setState({ output: "Error: Invalid link type!" })
 		}
 	}
 	handleLinkChange(e) {
@@ -42,7 +46,7 @@ class Scraper extends Component {
 					<br />
 					<RaisedButton className="populateBtn" label="Populate" onClick={populateOutput} primary={true} />
 					<br /><br />
-					<textarea className="output" value={this.state.output} />
+					{ this.state.showOutput ? <textarea className="output" value={this.state.output.replace('\\n','\n')} /> : null }
 				</div>
 			</MuiThemeProvider>
 		);

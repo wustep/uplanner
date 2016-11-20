@@ -66,3 +66,20 @@ hr {
     top:20px;
     left:20px;
 }
+
+#lowerHalf {
+    top:-40px;
+}
+
+#topHalf {
+    margin-bottom: -150px;
+}
+
+#eventsSection {
+    margin-top: -40px;
+}
+
+#infoPic {
+    position:relative;
+    left:19.5em;
+}

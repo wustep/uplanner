@@ -66,7 +66,7 @@ class BigTagButtons extends Component
     
     render() {
         var self = this;
-        var buttons = ["Acadmic", "Social", "Athletic"];
+        var buttons = ["Academic", "Social", "Athletic"];
         
         return(
           <div>

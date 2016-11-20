@@ -14,7 +14,7 @@ function getEvents() {
 class Events extends Component {
   render() {
     return (
-      <div className="Events">
+      <div className="Events" id='eventsSection'>
 		<p><b>Event 1</b><br/><i>Time</i> : <i>Location</i><br/>Info</p>
 		<hr/>
 		<getEvents/>

@@ -12,6 +12,7 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RegisterButton from './components/RegisterButton';
 import ThreeButtons from './components/ThreeButtons';
+import InformationButton from './components/InformationButton';
 import Events from './components/Events';
 
 class App extends Component {
@@ -21,14 +22,13 @@ class App extends Component {
     if(loggedIn) {
         return (
           <div className="App">
-            <div className="App-header">
-            <br />
-              <img src={logo2} width='150' />
+            <div className="App-header" id='topHalf'>
+            
                 <h1>UPlanner</h1>
 
             
 
-                <br /><br/>
+                <br />
             
                 
                 <div id='registerButton'>
@@ -39,21 +39,21 @@ class App extends Component {
             
             <div id='informationButton'>
                 <MuiThemeProvider>
-                    <RegisterButton />
+                    <InformationButton />
                 </MuiThemeProvider>
                 </div>
             </div>
-
-        
-            <br />
-            <p className="App-intro">
+            <p className="App-intro" id='lowerHalf'>
             I am interested in...<br /><br />
+
+            <div className="App-intro">
+
                 <MuiThemeProvider>
                     <ThreeButtons />
                 </MuiThemeProvider>
-            </p>
+            </div>
 			<Events/>
-          </div>
+         </p> </div>
         );
     } else {
         return (

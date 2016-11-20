@@ -13,14 +13,15 @@ class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dataSource: []
+			dataSource: [],
+			repopulateEvents: false
 		};
 	}
 	handleUpdateInput = (value) => {
 		var that = this;
 		searchEvents(value).then(function(data) {
 			var out = [];
-			for (var i = 0; i < 15; i++) {
+			for (var i = 0; i < data.length && i < 15; i++) {
 				var name = data[i]["name"];
 				if (name !== "null") {
 					out.push(name);
@@ -29,7 +30,10 @@ class Search extends Component {
 			that.setState({dataSource: out});
 		});
 	}
-	
+	handleSubmit() {
+		console.log("Submit!");
+		this.prop.repopulateEvents;
+	}
 	render() {
 		return(
 			<MuiThemeProvider>
@@ -39,6 +43,7 @@ class Search extends Component {
 				  dataSource={this.state.dataSource}
 				  onUpdateInput={this.handleUpdateInput}
 				  fullWidth={true}
+				  onNewRequest={this.handleSubmit}
 				/>
 				<br/><br/>
 			</div>

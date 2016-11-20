@@ -15,6 +15,7 @@ import ThreeButtons from './components/ThreeButtons';
 import Events from './components/events/Events';
 import InformationButton from './components/InformationButton';
 import AppTopBar from './components/AppTopBar';
+import LogoBanner from './images/combined.png';
 
 class App extends Component {
   render() {
@@ -24,7 +25,7 @@ class App extends Component {
         return (
           <div className="App">
                 <div className="App-header" id='topHalf'>
-                <h1>UPlanner</h1>
+				<img className="App-banner" src={LogoBanner}/><br/>
                 <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />

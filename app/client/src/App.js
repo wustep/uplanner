@@ -30,12 +30,12 @@ class App extends Component {
                 </MuiThemeProvider>
 
             </div>
-            <p className="App-intro">
+            <div className="App-intro">
             Interested in:
                 <MuiThemeProvider>
                     <ThreeButtons />
                 </MuiThemeProvider>
-            </p>
+            </div>
 			<Events/>
           </div>
         );

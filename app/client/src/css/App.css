@@ -54,3 +54,15 @@ hr {
 #signupButton {
     text-align: center;
 }
+
+#registerButton {
+    position:absolute;
+    top:20px;
+    right:20px;
+}
+
+#informationButton {
+    position:absolute;
+    top:20px;
+    left:20px;
+}

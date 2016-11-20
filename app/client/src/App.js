@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './images/logo.svg';
+import logo2 from './images/logo.png';
 import './css/App.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -22,16 +23,31 @@ class App extends Component {
           <div className="App">
             <div className="App-header">
             <br />
-              <img src={logo} className="App-logo" alt="logo" />
-                <h1>Event Digest</h1>
+              <img src={logo2} width='150' />
+                <h1>UPlanner</h1>
 
+            
+
+                <br /><br/>
+            
+                
+                <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />
                 </MuiThemeProvider>
-
+                </div>
+            
+            <div id='informationButton'>
+                <MuiThemeProvider>
+                    <RegisterButton />
+                </MuiThemeProvider>
+                </div>
             </div>
+
+        
+            <br />
             <p className="App-intro">
-            Interested in:
+            I am interested in...<br /><br />
                 <MuiThemeProvider>
                     <ThreeButtons />
                 </MuiThemeProvider>

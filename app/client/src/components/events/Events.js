@@ -1,39 +1,22 @@
 import React, { Component } from 'react';
 var fetch = require('node-fetch')
 
+function getEvents() {
+	return fetch("http://localhost:3001/api/events").then(function(response) { return response.json(); }).then(function(json) {
+		return json;
+	});
+}
+
 class Events extends Component {
-	constructor(props) {
-		super(props);
+	componentWillMount() {
+		getEvents().then(function(res) { console.log(res)});
 	}
 	render() {
-		return (
-		<div className="Events">
-			<getEventsChildren/>
-		</div>
-		);
-	}
-}
-
-class getEventsChildren extends Component {
-	render() {
-		return (
-			fetch("http://localhost:3001/api/events").then(function(response) {
-				return response.json;
-			}).then(function(body) {
-				console.log(body);
-				for (var i = 0; i < body.length; i++) {
-					return <EventChild name="test" />
-				}
-			})
-		);
-	}
-}
-
-class EventChild extends Component {
-	render() {
-		return (
-			<p><b>Name: {this.props.name}</b><br/><i>{this.props.time_start} to {this.props.time_end} at {this.props.location}</i><br/>{this.props.description}</p>
-		);
+		return (<div className="Events">
+			<p>
+				<b>Name</b>
+			</p>
+		</div>)
 	}
 }
 

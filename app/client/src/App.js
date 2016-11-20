@@ -14,29 +14,38 @@ import ThreeButtons from './components/ThreeButtons';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-        <br />
-          <img src={logo} className="App-logo" alt="logo" />
-        
-            <br /><br /><br />
-            <h1>Project Name</h1>
-        
-            <MuiThemeProvider>
-                <RegisterButton />
-            </MuiThemeProvider>
-        
-        </div>
-        <br />
-        <p className="App-intro">
-        I am interested in...<br /><br />
-            <MuiThemeProvider>
-                <ThreeButtons />
-            </MuiThemeProvider>
-        </p>
-      </div>
-    );
+    let loggedIn = true;
+      
+    if(loggedIn) {
+        return (
+          <div className="App">
+            <div className="App-header">
+            <br />
+              <img src={logo} className="App-logo" alt="logo" />
+
+                <br /><br /><br />
+                <h1>Project Name</h1>
+
+                <MuiThemeProvider>
+                    <RegisterButton />
+                </MuiThemeProvider>
+
+            </div>
+            <br />
+            <p className="App-intro">
+            I am interested in...<br /><br />
+                <MuiThemeProvider>
+                    <ThreeButtons />
+                </MuiThemeProvider>
+            </p>
+          </div>
+        );
+    } else {
+        return (
+            <div>NOT LOGGED IN BITCH</div>
+        )
+    }
+    
   }
 }
 

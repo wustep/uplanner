@@ -43,8 +43,16 @@ class BigTagButtons extends Component
     }
     
     callApi(label) {
+        let n = 0;
+        if(label == 'Academic'){
+            n=1;
+        }else if (label == 'Social'){
+            n=3;
+        }else{
+            n=2;
+        }
         var that = this;
-        fetch('http://localhost:3001/api/bigtags/1')
+        fetch('http://localhost:3001/api/bigtags/'+n)
         .then(function(response) {
             return response.json();
         }).then(function(response) {

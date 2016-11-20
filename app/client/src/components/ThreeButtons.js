@@ -84,7 +84,7 @@ class BigTagButtons extends Component
             })}
             <br/>
             {this.state.subButtons.map(function(name) {
-                return <RaisedButton label={name} style={style} />
+                return <RaisedButton label={name} onClick={self.props.onClick} style={style} />
             })}
             
           </div>

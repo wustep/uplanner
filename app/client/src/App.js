@@ -18,6 +18,21 @@ import AppTopBar from './components/AppTopBar';
 import LogoBanner from './images/combined.png';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            limit: false
+        }
+    }
+
+     handleClick(e) {
+        e.preventDefault();
+        this.setState({ limit: true })
+        console.log(e);
+        console.log(this.props);
+      }
+
   render() {
     let loggedIn = true;
       
@@ -35,7 +50,7 @@ class App extends Component {
 				
 				<div className="App-intro">
 					<MuiThemeProvider>
-						<ThreeButtons />
+						<ThreeButtons onClick={this.handleClick.bind(this)}/>
 					</MuiThemeProvider>
 				</div>
             
@@ -44,8 +59,8 @@ class App extends Component {
 					</MuiThemeProvider>
             </div>
             <div className="App-intro" id='lowerHalf'>
-			<Events/>
-			</div></div>
+			<Events limit={this.state.limit} />
+    		</div></div>
         );
     } else {
         return (

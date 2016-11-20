@@ -43,16 +43,11 @@ class BigTagButtons extends Component
     }
     
     callApi(label) {
-        alert(label);
-        var fetch = require('node-fetch');
-        fetch('http://localhost:3001/api/bigtags/1' , {
-    method: "POST",
-    
-})
+        var that = this;
+        fetch('http://localhost:3001/api/bigtags/1')
         .then(function(response) {
             return response.json();
         }).then(function(response) {
-            response = JSON.parse(response);
             console.log(response);
             var temp = [];
             for(let i=0; i<response.length; i++) {
@@ -61,32 +56,12 @@ class BigTagButtons extends Component
                 
  
             }
-           this.setState({subButtons: temp});
+           that.setState({subButtons: temp});
         });
   
- } 
-
+}
        
  
- //post to API with label as your data
-    // get back JSON object
-    // this.response.data.map(function(item)) { }
- // loop through every item and create html for item.name
-//        var array = [];
-//        for(loop through api) {
-//            array.push(item.name);
-//        }
-        
-    //     var response = JSON.parse('[{"bigtag_id":1,"tag_id":1,"name":"Academic"},{"bigtag_id":2,"tag_id":2,"name":"Athletics"},{"bigtag_id":3,"tag_id":3,"name":"Social"}]');
-        
-    //     console.log(response);
-    //     var temp = [];
-    //     for(let i=0; i<response.length; i++) {
-    //         console.log(response[i].name);
-    //         temp.push(response[i].name);
-    //     }
-    //     this.setState({subButtons: temp});
-    // }
     
     render() {
         var self = this;

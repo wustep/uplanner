@@ -1,3 +1,4 @@
+import tools from './tools.js';
 
 module.exports = {
 	// Creates a CORS request in a cross-browser manner (from teamup API website)
@@ -57,20 +58,22 @@ module.exports = {
 		xhr.send();
 	},
 	
-	generateSQL: function(data, retrieved) {
-		var out = "INSERT INTO events (name, location, desc, retrieved, time_start, time_end)\n";
+	generateSQL: function(data, retrieved) { // Not a good way of doing this, but we just want the db output for now
+		var out = "INSERT INTO events (`name`, `location`, `desc`, `source1`, `source2`, `time_start`, `time_end`)\nVALUES\n";
 		if (data["events"] !== null) {
 			var events = data["events"];
-			for (var i = 0; i < events.length; i++) {
+			for (var i = 0; i < events.length; i++) { // Using escape just for temporary usage, switching to prepared later
 				var cal = events[i]["subcalendar_id"];
 				var id = events[i]["id"];
-				var title = events[i]["title"];
-				var start_dt = events[i]["start_dt"].substring(0,19);
-				var end_dt = events[i]["end_dt"].substring(0,19);
-				var place = events[i]["location"];
+				var title = tools.sql_escape(events[i]["title"]);
+				var start_dt = tools.sql_escape(events[i]["start_dt"].substring(0,19));
+				var end_dt = tools.sql_escape(events[i]["end_dt"].substring(0,19));
+				var place = tools.sql_escape(events[i]["location"]);
 				var desc = events[i]["notes"];
-				var desc2 = String(desc).replace(/\<p\>/g,"").replace(/\<\/p\>/g,"").replace(/\n/g,"<br>");
-				out = out + "(" + title + "," + place + "," + "," + desc2 + "," + retrieved + "," + start_dt + "," + end_dt + ")\n";
+				if (desc !== null) desc = tools.sql_escape(desc.replace(/<p>/g,"").replace(/<\/p>/g,"").replace(/\n/g,"<br>"));
+				var end = (i < events.length - 1) ? "," : ";";
+				out = out + "('" + title + "','" + place + "','" + desc + "','" + retrieved + "','" + cal + "','" + start_dt + "','" + end_dt + "')" + end + "\n";
+				console.log(out);
 			}
 		}
 		return out;

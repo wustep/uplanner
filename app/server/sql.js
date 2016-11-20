@@ -29,7 +29,7 @@ module.exports = {
 	},
 	getBigTags: function(parentTag = 0, callback) {
 		// Get big categories
-		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = " + parentTag + " ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", function (err, results) {
+		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", ['parentTag'], function (err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			console.log("==getBigTags==");
 			console.log(results);
@@ -46,4 +46,24 @@ module.exports = {
 	setTag: function(tag, weight) {
 		
 	}
+	/*
+	fetchCalendar: function(url, type, callback) {
+		var result = "";
+		switch (type) {
+			type "teamup": {
+				result = 
+				break;
+			}
+			default: {
+				result = "Error: "
+				break;
+			}
+		}
+		
+	},
+	
+	convertTeamUpToSQL: function(json, callback) {
+		
+	}
+	*/
 }

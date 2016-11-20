@@ -34,10 +34,6 @@ class App extends Component {
                 <InterestedButton />
             </MuiThemeProvider>
         </p>
-        
-        <div>
-        
-        </div>
       </div>
     );
   }

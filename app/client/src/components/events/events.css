@@ -1,6 +1,10 @@
 .eventTitle {
-	font-weight: bold;
+	text-align: left;
 }
-.eventInfo {
-	font-style: italic;
+.eventDesc {
+	text-align: left;
 }
+
+.event: {
+   boxShadow: '#17a574 0px 1px 6px, #17a574 0px 1px 4px'
+ }

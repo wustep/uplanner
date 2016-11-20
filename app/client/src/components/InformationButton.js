@@ -46,7 +46,7 @@ state = {
 
 
     return (
-      <div id='infoText'>
+      <div id='informationButton'>
         <RaisedButton label="Information" onTouchTap={this.handleOpen} />
         <Dialog
           title = 'About this app'

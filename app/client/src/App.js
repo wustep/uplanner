@@ -23,18 +23,8 @@ class App extends Component {
     if(loggedIn) {
         return (
           <div className="App">
-            
-            <div className="App-header" id='topHalf'>
-            
-                
-            
+                <div className="App-header" id='topHalf'>
                 <h1>UPlanner</h1>
-
-            
-
-                <br />
-            
-                
                 <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />
@@ -42,7 +32,6 @@ class App extends Component {
                 </div>
 				
 				I am interested in...<br /><br />
-
 				<div className="App-intro">
 
 					<MuiThemeProvider>
@@ -50,11 +39,9 @@ class App extends Component {
 					</MuiThemeProvider>
 				</div>
             
-				<div id='informationButton'>
 					<MuiThemeProvider>
 						<InformationButton />
 					</MuiThemeProvider>
-					</div>
             </div>
             <div className="App-intro" id='lowerHalf'>
 			<Events/>

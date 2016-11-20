@@ -19,7 +19,7 @@ module.exports = {
 		});
 	},
 	getEvents: function(preferences, callback) {
-		db.query("SELECT * FROM `events` LIMIT 50", function(err, results) {
+		db.query("SELECT * FROM `events` ORDER BY time_start ASC, importance DESC", function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});

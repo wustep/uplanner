@@ -57,7 +57,6 @@ state = {
           autoScrollBodyContent={true}
         >
         <br />
-        <img src={logo} id='infoPic' width = '100'/><br /><br />
         Tailored towards college campuses, UPlanner was built from the ground up to give college students everywhere a comprehensive guide to the events around them.
         <br /><br />
         As a guest, you can get started right away by choosing your interests and looking at events around you, or you can create an account for more personalized options!

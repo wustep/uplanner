@@ -23,9 +23,8 @@ a {
 }
 
 .App-banner {
-  width: 220px;
+  width: 210px;
   text-align: center;
-
 }
 
 .App-header {
@@ -96,6 +95,5 @@ hr {
 }
 
 #infoPic {
-    position:relative;
-    left:19.5em;
+    text-align: center;
 }

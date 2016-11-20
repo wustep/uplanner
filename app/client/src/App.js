@@ -36,24 +36,25 @@ class App extends Component {
                     <RegisterButton />
                 </MuiThemeProvider>
                 </div>
+				
+				I am interested in...<br /><br />
+
+				<div className="App-intro">
+
+					<MuiThemeProvider>
+						<ThreeButtons />
+					</MuiThemeProvider>
+				</div>
             
-            <div id='informationButton'>
-                <MuiThemeProvider>
-                    <InformationButton />
-                </MuiThemeProvider>
-                </div>
+				<div id='informationButton'>
+					<MuiThemeProvider>
+						<InformationButton />
+					</MuiThemeProvider>
+					</div>
             </div>
-            <p className="App-intro" id='lowerHalf'>
-            I am interested in...<br /><br />
-
-            <div className="App-intro">
-
-                <MuiThemeProvider>
-                    <ThreeButtons />
-                </MuiThemeProvider>
-            </div>
+            <div className="App-intro" id='lowerHalf'>
 			<Events/>
-         </p> </div>
+			</div></div>
         );
     } else {
         return (

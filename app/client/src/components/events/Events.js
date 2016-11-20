@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 var fetch = require('node-fetch')
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import './events.css';
 
 function getEvents() {
 	return fetch("http://localhost:3001/api/events").then(function(response) { return response.json(); }).then(function(json) {
@@ -17,7 +19,7 @@ class Events extends Component {
 		getEvents().then(function(data) {
 			var out = "";
 			for (var i = 0; i < data.length; i++) {
-				out = out + "<b>" + data[i]["name"] + "</b><br/><i>"+data[i]["location"]+"</i><br/>" + data[i]["desc"]+"<br/><hr/>";
+				out = out + "<span class='eventTitle'>" + data[i]["name"] + "</span><br/><span class='eventInfo'>"+data[i]["location"]+"</span><br/><span class='eventDescription'>" + data[i]["desc"]+"</span><br/><hr/>";
 			}
 			that.setState({events: out});
 		});

@@ -69,10 +69,12 @@ hr {
 
 #lowerHalf {
     top:-40px;
+    background-color: #17a574;
 }
 
 #topHalf {
     margin-bottom: -150px;
+    background-color: #17a574;
 }
 
 #eventsSection {

@@ -11,7 +11,7 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RegisterButton from './components/RegisterButton';
 import ThreeButtons from './components/ThreeButtons';
-import Events from './components/Events';
+import Events from './components/events/Events';
 
 class App extends Component {
   render() {

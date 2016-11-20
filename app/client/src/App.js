@@ -10,8 +10,7 @@ injectTapEventPlugin();
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RegisterButton from './components/RegisterButton';
-import InterestedButton from './components/InterestedButton';
-import MasterGrid from './components/MasterGrid';
+import ThreeButtons from './components/ThreeButtons';
 
 class App extends Component {
   render() {
@@ -29,9 +28,11 @@ class App extends Component {
             </MuiThemeProvider>
         
         </div>
+        <br />
         <p className="App-intro">
+        I am interested in...<br /><br />
             <MuiThemeProvider>
-                <InterestedButton />
+                <ThreeButtons />
             </MuiThemeProvider>
         </p>
       </div>

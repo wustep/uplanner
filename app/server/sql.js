@@ -13,7 +13,7 @@ module.exports = {
 		});
 	},
 	getPreferences: function(user, callback) {
-		db.query("SELECT * FROM `user_tags`", function(err, results) {
+		db.query("SELECT * FROM `users_preferences` WHERE user_id = ?", [user], function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});
@@ -21,19 +21,13 @@ module.exports = {
 	getEvents: function(preferences, callback) {
 		db.query("SELECT * FROM `events` LIMIT 50", function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
-			console.log("==getEvents==");
-			console.log(results);
-			console.log("==============");
 			callback(false, results);
 		});
 	},
 	getBigTags: function(parentTag = 0, callback) {
 		// Get big categories
-		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", ['parentTag'], function (err, results) {
+		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", [parentTag], function (err, results) {
 			if (err) { console.log(err); callback(true); return; }
-			console.log("==getBigTags==");
-			console.log(results);
-			console.log("==============");
 			callback(false, results);
 		});
 	},
@@ -45,25 +39,11 @@ module.exports = {
 	},
 	setTag: function(tag, weight) {
 		
-	}
-	/*
-	fetchCalendar: function(url, type, callback) {
-		var result = "";
-		switch (type) {
-			type "teamup": {
-				result = 
-				break;
-			}
-			default: {
-				result = "Error: "
-				break;
-			}
-		}
-		
 	},
-	
-	convertTeamUpToSQL: function(json, callback) {
-		
+	getPeopleTypes: function(callback) {
+		db.query("SELECT `tag_id`, `name` FROM `tags` WHERE tag_id >= 100 AND tag_id <= 103", function (err, results) {
+			if (err) { console.log(err); callback(true); return; }
+			callback(false, results);
+		});
 	}
-	*/
 }

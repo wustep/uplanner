@@ -11,6 +11,7 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RegisterButton from './components/RegisterButton';
 import ThreeButtons from './components/ThreeButtons';
+import Events from './components/Events';
 
 class App extends Component {
   render() {
@@ -22,27 +23,25 @@ class App extends Component {
             <div className="App-header">
             <br />
               <img src={logo} className="App-logo" alt="logo" />
-
-                <br /><br /><br />
-                <h1>Project Name</h1>
+                <h1>Event Digest</h1>
 
                 <MuiThemeProvider>
                     <RegisterButton />
                 </MuiThemeProvider>
 
             </div>
-            <br />
             <p className="App-intro">
-            I am interested in...<br /><br />
+            Interested in:
                 <MuiThemeProvider>
                     <ThreeButtons />
                 </MuiThemeProvider>
             </p>
+			<Events/>
           </div>
         );
     } else {
         return (
-            <div>NOT LOGGED IN BITCH</div>
+            <div>Guest View</div> // TBD
         )
     }
     

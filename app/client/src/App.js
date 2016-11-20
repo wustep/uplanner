@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './images/logo.svg';
+import logo2 from './images/logo.png';
 import './css/App.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -12,6 +13,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RegisterButton from './components/RegisterButton';
 import ThreeButtons from './components/ThreeButtons';
 import Events from './components/events/Events';
+import InformationButton from './components/InformationButton';
 
 class App extends Component {
   render() {
@@ -20,24 +22,38 @@ class App extends Component {
     if(loggedIn) {
         return (
           <div className="App">
-            <div className="App-header">
-            <br />
-              <img src={logo} className="App-logo" alt="logo" />
-                <h1>Event Digest</h1>
+            <div className="App-header" id='topHalf'>
+            
+                <h1>UPlanner</h1>
 
+            
+
+                <br />
+            
+                
+                <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />
                 </MuiThemeProvider>
-
+                </div>
+            
+            <div id='informationButton'>
+                <MuiThemeProvider>
+                    <InformationButton />
+                </MuiThemeProvider>
+                </div>
             </div>
+            <p className="App-intro" id='lowerHalf'>
+            I am interested in...<br /><br />
+
             <div className="App-intro">
-            Interested in:
+
                 <MuiThemeProvider>
                     <ThreeButtons />
                 </MuiThemeProvider>
             </div>
 			<Events/>
-          </div>
+         </p> </div>
         );
     } else {
         return (

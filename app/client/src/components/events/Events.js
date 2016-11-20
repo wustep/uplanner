@@ -38,7 +38,7 @@ class Events extends Component {
 					sub = (data[i]["time_start"] != null ? parseSingleDate(data[i]["time_start"]) : "") + (sub.length > 0 ? ", " : "") + sub;
 					out.push( 
 					(<MuiThemeProvider><Card className="event">
-						<CardHeader className="eventTitle" title={name} subtitle={sub} actAsExpander={expand} showExpandableButton={expand}/>
+						<CardHeader className="eventTitle" titleStyle={{"font-weight": "bold"}} title={name} subtitle={sub} actAsExpander={expand} showExpandableButton={expand}/>
 							{expand ? <CardText className="eventDesc" expandable={true} dangerouslySetInnerHTML={createMarkup(data[i]["desc"])}></CardText> : null} 
 						<hr/>
 					</Card></MuiThemeProvider>));

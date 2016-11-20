@@ -43,6 +43,7 @@ class BigTagButtons extends Component
     }
     
     callApi(label) {
+        
         let n = 0;
         if(label == 'Academic'){
             n=1;
@@ -77,6 +78,7 @@ class BigTagButtons extends Component
         
         return(
           <div>
+            I am interested in...
             {buttons.map(function(name) {
                 return <RaisedButton label={name} onClick={self.callApi.bind(this, name)} style={style} />
             })}

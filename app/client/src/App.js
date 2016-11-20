@@ -32,9 +32,8 @@ class App extends Component {
                 </MuiThemeProvider>
                 </div>
 				
-				I am interested in...<br /><br />
+				
 				<div className="App-intro">
-
 					<MuiThemeProvider>
 						<ThreeButtons />
 					</MuiThemeProvider>

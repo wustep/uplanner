@@ -50,7 +50,7 @@ state = {
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
         >
-        <div id='left_side'><h1 id='register_title'>Register</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Verify Password" floatingLabelFixed={true} /><br /><SelectField
+        <div id='left_side'><h1 id='register_title'>Register</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Verify Password" type='password' floatingLabelFixed={true} /><br /><SelectField
           floatingLabelText="Type of User"
           value={this.state.value}
           onChange={this.handleChange}
@@ -63,7 +63,7 @@ state = {
           <MenuItem value={4} primaryText="Staff/Faculty Member" />
           <MenuItem value={5} primaryText="Other" />
         </SelectField><br /><RaisedButton id='signupButton' label="Register" /></div>
-        <div id='right_side'><h1 id='register_title'>Log In</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" floatingLabelFixed={true} /><br /><RaisedButton id='signupButton' label="Log in" /></div>
+        <div id='right_side'><h1 id='register_title'>Log In</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br /><RaisedButton id='signupButton' label="Log in" /></div>
         
         </Dialog>
         

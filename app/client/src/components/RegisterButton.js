@@ -17,7 +17,9 @@ const styles = {
  * Dialog content can be scrollable.
  */
 export default class DialogExampleScrollable extends React.Component {
-  
+  state = {
+    open: false,
+  };
 
   handleOpen = () => {
     this.setState({open: true});

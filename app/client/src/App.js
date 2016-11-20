@@ -14,6 +14,7 @@ import RegisterButton from './components/RegisterButton';
 import ThreeButtons from './components/ThreeButtons';
 import Events from './components/events/Events';
 import InformationButton from './components/InformationButton';
+import AppTopBar from './components/AppTopBar';
 
 class App extends Component {
   render() {
@@ -22,7 +23,10 @@ class App extends Component {
     if(loggedIn) {
         return (
           <div className="App">
+            
             <div className="App-header" id='topHalf'>
+            
+                
             
                 <h1>UPlanner</h1>
 

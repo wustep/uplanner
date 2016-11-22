@@ -6,10 +6,10 @@ Live Demo coming soon!
 
 ## Team
 
-- Stephen Wu - @wustep - 2nd Year Computer Science Engineering Major, General Design Minor
+- Stephen Wu - [@wustep](http://github.com/wustep) - 2nd Year Computer Science Engineering Major, General Design Minor
 - Stephen Pioro - 2nd Year Industrial Systems and Engineering Major
-- Jacob Shoaf - @shoafj7919 - 2nd Year Computer Science Engineering Major
-- Ishan Taparia - @itaparia - 1st Year Computer Science Engineering Major
+- Jacob Shoaf - [@shoafj7919](http://github.com/shoafj7919) - 2nd Year Computer Science Engineering Major
+- Ishan Taparia - [@itaparia](http://github.com/itaparia) - 1st Year Computer Science Engineering Major
 
 ## Description
 
@@ -24,6 +24,7 @@ Live Demo coming soon!
 - NodeJS
 -- Client, Scraper: React
 -- Server: Express
+- Database: MySQL
 
 ## Expansion
 - The current method of scraping is immediately creating a SQL query of all the events from the source. To expand, this script would have a client interface that allows the user to approve events or add missing tags or info. 
@@ -33,4 +34,4 @@ Live Demo coming soon!
 - Users with expanded personalization options and event rating that improves the algorithim (machine learning). 
 
 ## Notes
-- 
+- SSH was used for remote MySQL, but we just ended up using PuTTY during the hackathon instead of a node module

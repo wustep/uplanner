@@ -1,7 +1,7 @@
 {
-  "name": "hackohio",
+  "name": "UPlanner Server",
   "version": "0.1.0",
-  "description": "2016 OHI/O Hackathon",
+  "description": "2016 OHI/O Hackathon: personalized event digest",
   "private": true,
   "babel": {
     "presets": [

@@ -1,14 +1,16 @@
 # UPlanner
 
 OHI/O 2016 Hackathon Project - personalized event digest platform for universities and colleges
-Hackathon branch version, see main branch for mroe details
+Hackathon version, see main project for more details!
 
-## Team
+## Hackathon Team
 
 - Stephen Wu - [@wustep](http://github.com/wustep) - 2nd Year Computer Science Engineering Major, General Design Minor
 - Stephen Pioro - 2nd Year Industrial Systems and Engineering Major
 - Jacob Shoaf - [@shoafj7919](http://github.com/shoafj7919) - 2nd Year Computer Science Engineering Major
 - Ishan Taparia - [@itaparia](http://github.com/itaparia) - 1st Year Computer Science Engineering Major
+
+HackOHIO is Ohio State's annual hackathon and took place from Nov 19-20th!
 
 ## Description
 
@@ -33,5 +35,5 @@ UPlanner is an OHI/O '16 project creating a prototype for a events platform that
 - Users with expanded personalization options and event rating that improves the algorithim (machine learning). 
 
 ## Notes
-- A lot of initial features are missing in the hackathon version, as we were learning Node & React for the first time. Check out the main branch!
+- A lot of initial features are missing in the hackathon version, as we were learning Node & React for the first time. More to come soon!
 - SSH was used for remote MySQL, but we just ended up using PuTTY during the hackathon instead of a node module

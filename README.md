@@ -1,8 +1,7 @@
 # UPlanner
 
 OHI/O 2016 Hackathon Project - personalized event digest platform for universities and colleges
-
-Live Demo coming soon!
+Hackathon branch version, see main branch for mroe details
 
 ## Team
 
@@ -13,7 +12,7 @@ Live Demo coming soon!
 
 ## Description
 
--UPlanner is an OHI/O '16 project creating a prototype for a events platform that:
+UPlanner is an OHI/O '16 project creating a prototype for a events platform that:
 
 1. Scrapes multiple different platforms (Google Calendar, TeamUp, others) creating a comprehensive database of every public event on campus from lectures to concerts to sporting events
 2. Runs an API webserver allowing queries into the database, pulling events, tags, user preferences, etc.
@@ -34,4 +33,5 @@ Live Demo coming soon!
 - Users with expanded personalization options and event rating that improves the algorithim (machine learning). 
 
 ## Notes
+- A lot of initial features are missing in the hackathon version, as we were learning Node & React for the first time. Check out the main branch!
 - SSH was used for remote MySQL, but we just ended up using PuTTY during the hackathon instead of a node module

@@ -1,0 +1,22 @@
+{
+	"ssh": {
+		"username": "",
+		"privateKey": "",
+		"passphrase": "",
+		"password": "",
+		"host": "",
+		"port": 0,
+		"srcHost": "",
+		"srcPort": 0,
+		"dstHost": "",
+		"dstPort": 0
+	},
+	"sql": {
+		"username": "",
+		"password": "",
+		"database": "",
+		"host": "",
+		"port": 0,
+		"dialect": ""
+	}
+}

@@ -1,9 +1,9 @@
 import express from 'express';
 import path from 'path';
 import sql from "./sql.js";
+import config from '../config.json';
 
 const app = express();
-const config = require('../config.json');
 
 /* SSH2 tunnel wasn't working, using PuTTY instead, may need this stuff later though 
 
@@ -31,12 +31,12 @@ conn.on('ready', function() {
 
 app.set('port', (process.env.PORT || 3001));
 sql.connectDB();
-app.use('/api', require('./api_routes'));
+app.use('/api', require('./routes'));
 
 if (process.env.NODE_ENV === 'production') { // Express only serves static assets in production
-  app.use(express.static('../client/build'));
+	app.use(express.static('../client/build'));
 }
 
 app.listen(app.get('port'), () => {
-  console.log(`Server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+	console.log(`Server at: ${config.baseurl}:${app.get('port')}/`); // eslint-disable-line no-console
 });

@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import fetch from 'node-fetch';
-
-import {Card, CardHeader, CardText} from 'material-ui/Card';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './Events.css';
 import moment from 'moment';
 import Search from './Search';
-
+import EventCard from './EventCard';
 import config from '../../../../config.json'; // TODO: Might re-think this later...
 
 function getEvents(query="") {
@@ -15,37 +12,20 @@ function getEvents(query="") {
 	});
 }
 
-function createMarkup(val) {
-	return {__html: val};
-}
-
-function parseSingleDate(val) {
-	return moment(val).format("dddd, MMMM Do, h:mma");
-}
 
 function parseEvents(data) { // TODO: Make this into a legit component?
 	var out = [];
 	for (var i = 0; i < data.length; i++) {
 		var name = data[i]["name"];
 		if (name !== "null") {
-					//var desc = data[i]["desc"] != "null" ? "<span class='eventDescription'>" + data[i]["desc"]+"</span><br/>" : "";
-					//out = out + "<div class='event'><span class='eventTitle'>" + name + "</span><br/><span class='eventInfo'>"+data[i]["location"]+"</span><br/><span class='eventDesc'>"+ desc + "</span></div><hr/>";
-			var expand = data[i]["desc"] !== "null";
-			var sub = data[i]["location"] !== "null" ? data[i]["location"] : "";
-			sub = (data[i]["time_start"] !== "null" ? parseSingleDate(data[i]["time_start"]) : "") + (sub.length > 0 ? ", " : "") + sub;
-					out.push( 
-			(<MuiThemeProvider><Card className="event">
-				<CardHeader className="eventTitle" titleStyle={{"fontWeight": "bold"}} title={name} subtitle={sub} actAsExpander={expand} showExpandableButton={expand}/>
-					{expand ? <CardText className="eventDesc" expandable={true} dangerouslySetInnerHTML={createMarkup(data[i]["desc"])}></CardText> : null} 
-				<hr/>
-			</Card></MuiThemeProvider>));
+			out.push(<EventCard key={"Event" + i} name={data[i]["name"]} location={data[i]["location"]} time_start={data[i]["time_start"]} time_end={data[i]["time_end"]} desc={data[i]["desc"]} />);
 		}
 	}
 	return out;
 }
 
 
-export default class Events extends Component {
+export default class Events extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

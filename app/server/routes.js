@@ -8,6 +8,7 @@ import sql from "./sql.js";
 router.use(function(req, res, next) { // TODO Bad security probably, solve later.
 	res.header("Access-Control-Allow-Origin", config.baseurl+":3000");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header('Access-Control-Allow-Methods', 'GET');
 	res.header("Access-Control-Allow-Credentials", "true")
 	next();
 });

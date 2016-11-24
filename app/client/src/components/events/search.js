@@ -3,18 +3,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AutoComplete from 'material-ui/AutoComplete';
 
 function searchEvents(q) {
-	return fetch("http://localhost:3001/api/events/" + q).then(function(response) { return response.json(); }).then(function(json) {
-		return json;
-	});
+	return fetch("http://localhost:3001/api/events/" + q).then(function(response) { return response.json(); });
 }
 
-
-class Search extends Component {
+export default class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			dataSource: []
-			//repopulate: props.repopulate;
 		};
 	}
 	handleUpdateInput = (value) => {
@@ -30,8 +26,8 @@ class Search extends Component {
 			that.setState({dataSource: out});
 		});
 	}
-	handleSubmit() {
-		//this.state.repopulate = true;
+	handleSubmit(e) {
+		this.props.repopulateEvents(e);
 	}
 	render() {
 		return(
@@ -42,7 +38,8 @@ class Search extends Component {
 				  dataSource={this.state.dataSource}
 				  onUpdateInput={this.handleUpdateInput}
 				  fullWidth={true}
-				  onNewRequest={this.handleSubmit}
+				  onNewRequest={this.handleSubmit.bind(this)}
+				  value={this.props.query}
 				/>
 				<br/><br/>
 			</div>
@@ -50,5 +47,3 @@ class Search extends Component {
 		);
 	}
 }
-
-export default Search;

@@ -43,12 +43,12 @@ function parseEvents(data) {
 }
 
 
-class Events extends Component {
+export default class Events extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			events: [],
-			repopulate: false
+			query: ""
 		};
 		var self = this;
 		getEvents().then(function(data) {
@@ -56,21 +56,24 @@ class Events extends Component {
 		});
 	}
 	repopulateEvents(query) {
-		
+		console.log(query);
+		var self = this;
+		getEvents(query).then(function(data) {
+			self.setState({events: parseEvents(data)});
+		});
 	}
 	render() {
-		//console.log(this.state.repopulate);
-		//console.log(this.props.limit);
 		if (this.props.limit) {
 		return(
 				<div className="Events"><Search/>{this.state.events.slice(0,3)}</div>
 			);
 		} else {
 			return (
-				<div className="Events"><Search repopulate={this.state.repopulate}/>{this.state.events}</div>
+				<div className="Events">
+					<Search query={this.state.query} repopulateEvents={this.repopulateEvents.bind(this)}/>
+					{this.state.events}
+				</div>
 			);
 		}
 	}
 }
-
-export default Events;

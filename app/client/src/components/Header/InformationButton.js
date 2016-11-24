@@ -38,7 +38,7 @@ export default class DialogExampleScrollable extends React.Component {
 		];
 		return (
 			<div id='informationButton'>
-				<RaisedButton label="Information" onTouchTap={this.handleOpen} />
+				<FlatButton label="Information" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog
 					title = 'About this app'
 					actions={actions}

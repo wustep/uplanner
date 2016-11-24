@@ -2,34 +2,15 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
+import config from '../../../../config.json'; // TODO: Might re-think this later...
+import LogoBanner from '../../img/combined.png';
+import RegisterButton from "./RegisterButton";
+import InformationButton from "./InformationButton";
 
-/**
- * A simple example of `AppBar` with an icon on the right.
- * By default, the left icon is a navigation-menu.
- */
 
-class Login extends React.Component {
-	render() {
-		return(
-			<FlatButton label="Login" />
-		);
-	}
-}
-
-class Register extends React.Component {
-	render() {
-		return(
-			<FlatButton label="Register" />
-		);
-	}
-}
-
-class Info extends React.Component {
-	render() {
-		return (
-			<FlatButton label="Info" />
-		);
-	}
+const AppBarStyle = {
+	padding: "10px 24px",
+	position: "fixed"
 }
 
 export default class AppBarExampleIcon extends React.Component {
@@ -39,11 +20,11 @@ export default class AppBarExampleIcon extends React.Component {
 			logged: false
 		}
 	}
-	render() {
+	render() { // TODO: Update ports to be dynamic as well!
 		return (
-			<AppBar title="UPlanner" 
-					iconElementLeft={<Info />}
-					iconElementRight={this.state.logged ? "" : <div className="LoginRegisterButtons"><Login /><Register /></div>} 
+			<AppBar title={<a href={config.baseurl+":3000"}><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a>}
+					iconElementLeft={<InformationButton />} style={AppBarStyle}
+					iconElementRight={this.state.logged ? "" : <div className="LoginRegisterButtons"><RegisterButton /></div>} 
 			/>
 		);
 	}

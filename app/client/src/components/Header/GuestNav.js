@@ -79,7 +79,7 @@ class BigTagButtons extends Component
 		var buttons = ["Academic", "Social", "Athletic"];
 		
 		return(
-		  <div>
+		  <div id="topHalf">
 			I am interested in...
 			{buttons.map(function(name) {
 				return <RaisedButton label={name} onClick={self.callApi.bind(this, name)} style={style} />

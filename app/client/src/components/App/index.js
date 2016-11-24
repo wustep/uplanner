@@ -3,6 +3,16 @@ import './App.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import {
+  cyan500, cyan700,
+  pinkA200,
+  grey100, grey300, grey400, grey500,
+  white, darkBlack, fullBlack,
+} from 'material-ui/styles/colors';
+import {fade} from 'material-ui/utils/colorManipulator';
+
+import config from '../../../../config.json';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -15,7 +25,26 @@ import InformationButton from '../Header/InformationButton';
 import AppTopBar from '../Header/AppTopBar';
 import LogoBanner from '../../img/combined.png';
 
-class App extends React.Component {
+const muiTheme = getMuiTheme({
+	palette: { // A lot of these are defaults of the Light Theme
+		primary1Color: "#17a574", // Darker green
+	    primary2Color: cyan700, // Blue
+	    primary3Color: grey400,
+	    accent1Color: white,
+	    accent2Color: grey100,
+	    accent3Color: grey500,
+	    textColor: darkBlack, 
+	    alternateTextColor: white,
+	    canvasColor: white,
+	    borderColor: grey300,
+	    disabledColor: fade(darkBlack, 0.3),
+	    pickerHeaderColor: cyan500,
+	    clockCircleColor: fade(darkBlack, 0.07),
+	    shadowColor: fullBlack
+	}
+});
+
+export default class App extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -37,16 +66,10 @@ class App extends React.Component {
 	  
 	if (loggedIn) {
 		return (
-			<MuiThemeProvider>
-			 	<div className="App">
-				 	<AppTopBar />
-
-					<div className="App-header" id='topHalf'>
-						<a href="http://localhost:3000"><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a><br/>
-						<RegisterButton />						
-						<GuestNav onClick={this.handleClick.bind(this)}/>
-						<InformationButton />
-					</div>
+			<MuiThemeProvider muiTheme={muiTheme}>
+				<div className="App">
+					<AppTopBar />		
+					<GuestNav onClick={this.handleClick.bind(this)}/>
 					<div className="App-intro" id='lowerHalf'>
 						<Events limit={this.state.limit} />
 					</div>
@@ -61,5 +84,3 @@ class App extends React.Component {
 	
   }
 }
-
-export default App;

@@ -35,7 +35,7 @@ export default class DialogExampleScrollable extends React.Component {
 		const actions = [];
 		return (
 			<div id="registerButton">
-				<RaisedButton label="Register/Log in" onTouchTap={this.handleOpen} />
+				<FlatButton label="Register/Log in" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog actions={actions} modal={false} open={this.state.open}
 						onRequestClose={this.handleClose} autoScrollBodyContent={true}>
 					<div id='left_side'>

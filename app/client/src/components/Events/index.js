@@ -7,8 +7,10 @@ import './Events.css';
 import moment from 'moment';
 import Search from './Search';
 
+import config from '../../../../config.json'; // TODO: Might re-think this later...
+
 function getEvents(query="") {
-	return fetch("http://localhost:3001/api/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
+	return fetch(config.baseurl+":3001/api/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
 		return json;
 	});
 }
@@ -21,7 +23,7 @@ function parseSingleDate(val) {
 	return moment(val).format("dddd, MMMM Do, h:mma");
 }
 
-function parseEvents(data) {
+function parseEvents(data) { // TODO: Make this into a legit component?
 	var out = [];
 	for (var i = 0; i < data.length; i++) {
 		var name = data[i]["name"];

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AutoComplete from 'material-ui/AutoComplete';
 
+import config from '../../../../config.json'; // TODO: Might re-think this later...
+
 function searchEvents(q) {
-	return fetch("http://localhost:3001/api/events/" + q).then(function(response) { return response.json(); });
+	return fetch(config.base_url+":3001/api/events/" + q).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import config from '../../../../config.json'; // TODO: Might re-think this later...
+
 const style = {
   margin: 12,
   color: 'pink',
@@ -53,7 +55,7 @@ class BigTagButtons extends Component
             n=2;
         }
         var that = this;
-        fetch('http://localhost:3001/api/bigtags/'+n)
+        fetch(config.baseurl+':3001/api/bigtags/'+n)
         .then(function(response) {
             return response.json();
         }).then(function(response) {

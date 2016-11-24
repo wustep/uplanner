@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
 import RegisterButton from '../Header/RegisterButton';
-import ThreeButtons from '../Header/ThreeButtons';
+import GuestNav from '../Header/GuestNav';
 import Events from '../Events/';
 import InformationButton from '../Header/InformationButton';
 import AppTopBar from '../Header/AppTopBar';
@@ -45,7 +45,7 @@ class App extends Component {
                 </MuiThemeProvider>
 				
                 <MuiThemeProvider>
-					<ThreeButtons onClick={this.handleClick.bind(this)}/>
+					<GuestNav onClick={this.handleClick.bind(this)}/>
 				</MuiThemeProvider>
 
 				<MuiThemeProvider>

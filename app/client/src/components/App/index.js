@@ -39,7 +39,7 @@ class App extends React.Component {
         return (
           <div className="App">
                 <div className="App-header" id='topHalf'>
-				<a href="http://localhost:3000"><img className="App-banner" src={LogoBanner}/></a><br/>
+				<a href="http://localhost:3000"><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a><br/>
                 <MuiThemeProvider>
                     <RegisterButton />
                 </MuiThemeProvider>

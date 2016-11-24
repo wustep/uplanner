@@ -17,10 +17,6 @@ const styles = {
  * Dialog content can be scrollable.
  */
 export default class DialogExampleScrollable extends React.Component {
-	state = {
-		open: false,
-	};
-
 	handleOpen = () => {
 		this.setState({open: true});
 	};
@@ -29,41 +25,39 @@ export default class DialogExampleScrollable extends React.Component {
 		this.setState({open: false});
 	};
 	state = {
-	 value: 1,
+		open: false,
+		value: 1,
 	};
 
 	handleChange = (event, index, value) => this.setState({value});
 		
 	render() {
 		const actions = [];
-
 		return (
 			<div id="registerButton">
 				<RaisedButton label="Register/Log in" onTouchTap={this.handleOpen} />
-				<Dialog
-					actions={actions}
-					modal={false}
-					open={this.state.open}
-					onRequestClose={this.handleClose}
-					autoScrollBodyContent={true}
-				>
-					<div id='left_side'><h1 id='register_title'>Register</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Verify Password" type='password' floatingLabelFixed={true} /><br /><SelectField
-						floatingLabelText="Type of User"
-						value={this.state.value}
-						onChange={this.handleChange}
-					autoWidth={true}
-			
-					>
-					<MenuItem value={1} primaryText="" />	
-					<MenuItem value={2} primaryText="Undergraduate Student" />
-						<MenuItem value={3} primaryText="Graduate Student" />
-						<MenuItem value={4} primaryText="Staff/Faculty Member" />
-						<MenuItem value={5} primaryText="Other" />
-					</SelectField><br /><RaisedButton id='signupButton' label="Register" /></div>
-					<div id='right_side'><h1 id='register_title'>Log In</h1><br /><TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br /><TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br /><RaisedButton id='signupButton' label="Log in" /></div>
-					
+				<Dialog actions={actions} modal={false} open={this.state.open}
+						onRequestClose={this.handleClose} autoScrollBodyContent={true}>
+					<div id='left_side'>
+						<h1 id='register_title'>Register</h1><br />
+						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
+						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
+						<TextField hintText="" floatingLabelText="Verify Password" type='password' floatingLabelFixed={true} /><br />
+						<SelectField floatingLabelText="Type of User"value={this.state.value} onChange={this.handleChange} autoWidth={true}>
+							<MenuItem value={1} primaryText="" />	
+							<MenuItem value={2} primaryText="Undergraduate Student" />
+							<MenuItem value={3} primaryText="Graduate Student" />
+							<MenuItem value={4} primaryText="Staff/Faculty Member" />
+							<MenuItem value={5} primaryText="Other" />
+						</SelectField><br />
+						<RaisedButton id='signupButton' label="Register" /></div>
+					<div id='right_side'>
+						<h1 id='register_title'>Log In</h1><br />
+						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
+						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
+						<RaisedButton id='signupButton' label="Log in" />
+					</div>
 				</Dialog>
-				
 			</div>
 		);
 	}

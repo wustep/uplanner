@@ -6,10 +6,7 @@ import AppBar from 'material-ui/AppBar';
  * By default, the left icon is a navigation-menu.
  */
 const AppBarExampleIcon = () => (
-  <AppBar
-    title="Ooga Booga"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+	<AppBar title="Ooga Booga" iconClassNameRight="muidocs-icon-navigation-expand-more" />
 );
 
 export default AppBarExampleIcon;

@@ -35,7 +35,7 @@ class App extends Component {
 	
 	let loggedIn = true;
       
-    if(loggedIn) {
+    if (loggedIn) {
         return (
           <div className="App">
                 <div className="App-header" id='topHalf'>

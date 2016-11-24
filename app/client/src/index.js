@@ -8,7 +8,8 @@ import Scraper from './components/Scraper/';
 
 ReactDOM.render((
 	<Router history={browserHistory}>
-		<Route path="/scraper" component={Scraper}/>
+		<Route path="scraper" component={Scraper}/>
+		<Route path="s/:query" component={App}/>
 		<Route path="*" component={App}/>
 	</Router>
 ), document.getElementById('root'));

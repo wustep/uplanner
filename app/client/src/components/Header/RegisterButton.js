@@ -41,7 +41,7 @@ state = {
 
 
     return (
-      <div>
+      <div id="registerButton">
         <RaisedButton label="Register/Log in" onTouchTap={this.handleOpen} />
         <Dialog
           actions={actions}

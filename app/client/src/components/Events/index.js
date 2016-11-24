@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -56,9 +56,8 @@ export default class Events extends Component {
 		});
 	}
 	repopulateEvents(query) {
-		console.log(query);
 		var self = this;
-		getEvents(query).then(function(data) {
+		getEvents(query).then(function(data) { // TODO: For some reason, keyword "Women's" works but not "Men's". Hmm...
 			self.setState({events: parseEvents(data)});
 		});
 	}

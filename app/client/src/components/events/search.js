@@ -37,6 +37,8 @@ export default class Search extends Component {
 				  hintText="Try searching for an event, tag, or location, like 'Ohio Union' or 'Karaoke'!"
 				  dataSource={this.state.dataSource}
 				  onUpdateInput={this.handleUpdateInput}
+				  filter={AutoComplete.noFilter}
+				  maxSearchResults={5}
 				  fullWidth={true}
 				  onNewRequest={this.handleSubmit.bind(this)}
 				  value={this.props.query}

@@ -1,7 +1,7 @@
+import mysql from 'mysql2';
+
 const config = require('../config.json');
 var db = null; 
-
-var mysql = require('mysql2');
 
 module.exports = {
 	connectDB: function(callback) {
@@ -24,9 +24,16 @@ module.exports = {
 			callback(false, results);
 		});
 	},
-	searchEvents: function(query, callback) { // probably a better way to repeat this
+	/* -- OLD Search Algorithim --
+	searchEvents: function(query, callback) { 
 		var search = '%' + query.toLowerCase() + '%';
 		db.query("SELECT * FROM events WHERE LOWER(`name`) LIKE ? OR LOWER(`location`) LIKE ? OR LOWER(`desc`) LIKE ? LIMIT 40", [search, search, search], function(err, results) {
+			if (err) { console.log(err); callback(true); return; }
+			callback(false, results);
+		});
+	},*/
+	searchEvents: function(query, callback) {
+		db.query("SELECT * FROM events WHERE MATCH (`name`,`location`,`desc`) AGAINST (? IN NATURAL LANGUAGE MODE) LIMIT 40", [query], function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});

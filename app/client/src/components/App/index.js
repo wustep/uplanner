@@ -40,22 +40,17 @@ class App extends Component {
           <div className="App">
                 <div className="App-header" id='topHalf'>
 				<a href="http://localhost:3000"><img className="App-banner" src={LogoBanner}/></a><br/>
-                <div id='registerButton'>
                 <MuiThemeProvider>
                     <RegisterButton />
                 </MuiThemeProvider>
-                </div>
 				
-				
-				<div className="App-intro">
-					<MuiThemeProvider>
-						<ThreeButtons onClick={this.handleClick.bind(this)}/>
-					</MuiThemeProvider>
-				</div>
-            
-					<MuiThemeProvider>
-						<InformationButton />
-					</MuiThemeProvider>
+                <MuiThemeProvider>
+					<ThreeButtons onClick={this.handleClick.bind(this)}/>
+				</MuiThemeProvider>
+
+				<MuiThemeProvider>
+					<InformationButton />
+				</MuiThemeProvider>
             </div>
             <div className="App-intro" id='lowerHalf'>
 			<Events limit={this.state.limit} />

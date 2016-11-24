@@ -46,6 +46,7 @@ export default class DialogExampleScrollable extends React.Component {
 					open={this.state.open}
 					onRequestClose={this.handleClose}
 					autoScrollBodyContent={true}>
+					<br />
 					Tailored towards college campuses, UPlanner was built from the ground up to give college students everywhere a comprehensive guide to the events around them.
 					<br /><br />
 					As a guest, you can get started right away by choosing your interests and looking at events around you, or you can create an account for more personalized options!

@@ -33,7 +33,6 @@ export default class Search extends Component {
 	}
 	render() {
 		return(
-			<MuiThemeProvider>
 			<div className="Search">
 				<AutoComplete
 				  hintText="Try searching for an event, tag, or location, like 'Ohio Union' or 'Karaoke'!"
@@ -47,7 +46,6 @@ export default class Search extends Component {
 				/>
 				<br/><br/>
 			</div>
-			</MuiThemeProvider>
 		);
 	}
 }

@@ -17,51 +17,48 @@ import LogoBanner from '../../img/combined.png';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            limit: false
-        }
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			limit: false
+		}
+	}
 
-     handleClick(e) {
-        e.preventDefault();
-        this.setState({ limit: true })
-        console.log(e);
-        console.log(this.props);
-      }
+	 handleClick(e) {
+		e.preventDefault();
+		this.setState({ limit: true })
+		console.log(e);
+		console.log(this.props);
+	  }
 
 	render() {
 	
 	let loggedIn = true;
-      
-    if (loggedIn) {
-        return (
-          <div className="App">
-                <div className="App-header" id='topHalf'>
-				<a href="http://localhost:3000"><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a><br/>
-                <MuiThemeProvider>
-                    <RegisterButton />
-                </MuiThemeProvider>
-				
-                <MuiThemeProvider>
-					<GuestNav onClick={this.handleClick.bind(this)}/>
-				</MuiThemeProvider>
+	  
+	if (loggedIn) {
+		return (
+			<MuiThemeProvider>
+			 	<div className="App">
+				 	<AppTopBar />
 
-				<MuiThemeProvider>
-					<InformationButton />
-				</MuiThemeProvider>
-            </div>
-            <div className="App-intro" id='lowerHalf'>
-			<Events limit={this.state.limit} />
-    		</div></div>
-        );
-    } else {
-        return (
-            <div>Guest View</div> // TBD
-        )
-    }
-    
+					<div className="App-header" id='topHalf'>
+						<a href="http://localhost:3000"><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a><br/>
+						<RegisterButton />						
+						<GuestNav onClick={this.handleClick.bind(this)}/>
+						<InformationButton />
+					</div>
+					<div className="App-intro" id='lowerHalf'>
+						<Events limit={this.state.limit} />
+					</div>
+				</div>
+			</MuiThemeProvider>
+		);
+	} else {
+		return (
+			<div>Guest View</div> // TBD
+		)
+	}
+	
   }
 }
 

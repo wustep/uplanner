@@ -1,0 +1,50 @@
+#left_side {
+    float: left;
+}
+
+#right_side {
+    
+    float: right;
+}
+
+#register_title {
+    text-align: center;
+}
+
+#signupButton {
+    text-align: center;
+}
+
+#registerButton {
+    position:absolute;
+    top:20px;
+    right:20px;
+}
+
+#informationButton {
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+#lowerHalf {
+	margin: 0 auto;
+	padding: 30px 10px;
+	width: 800px;
+}
+
+#topHalf {
+    margin: 0;
+	background-color:#17a574;
+	box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    top:-40px;
+    background-color: #17a574;
+}
+
+#eventsSection {
+    margin-top: -40px;
+}
+
+#infoPic {
+    text-align: center;
+}

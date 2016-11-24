@@ -12,3 +12,4 @@ build
 npm-debug.log
 config.json
 id_rsa
+putty.exe

@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 
-import App from './App';
-import Scraper from './components/scraper/scraper';
+import './index.css';
+import App from './components/App/';
+import Scraper from './components/Scraper/';
 
 ReactDOM.render((
 	<Router history={browserHistory}>

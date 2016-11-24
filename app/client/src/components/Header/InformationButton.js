@@ -6,7 +6,6 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import logo from '../images/logo.png'
 
 const styles = {
   radioButton: {

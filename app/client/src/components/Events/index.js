@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 var fetch = require('node-fetch');
+
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import './events.css';
+import './Events.css';
 import moment from 'moment';
 import Search from './Search';
 

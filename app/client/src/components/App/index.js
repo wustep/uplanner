@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
-import logo2 from './images/logo.png';
-import './css/App.css';
+import './App.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RegisterButton from './components/RegisterButton';
-import ThreeButtons from './components/ThreeButtons';
-import Events from './components/events/Events';
-import InformationButton from './components/InformationButton';
-import AppTopBar from './components/AppTopBar';
-import LogoBanner from './images/combined.png';
+import RegisterButton from '../Header/RegisterButton';
+import ThreeButtons from '../Header/ThreeButtons';
+import Events from '../Events/';
+import InformationButton from '../Header/InformationButton';
+import AppTopBar from '../Header/AppTopBar';
+import LogoBanner from '../../img/combined.png';
 
 class App extends Component {
 

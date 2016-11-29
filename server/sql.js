@@ -1,16 +1,15 @@
 import mysql from 'mysql2';
 
-const config = require('../config.json');
 var db = null; 
 
 module.exports = {
 	connectDB: function(stream, callback) {
 		console.log("SQL: Trying connection")
 		db = mysql.createConnection({
-			host: config.sql.host,
-			user: config.sql.user,
-			password: config.sql.password,
-			database: config.sql.database,
+			host: process.env.sql_host,
+			user: process.env.sql_user,
+			password: process.env.sql_password,
+			database: process.env.sql_database,
 			stream: stream
 		});
 	},

@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
 //const promise = require('bluebird'); // TODO: Find out how we can improve this with bluebird?
-const config = require('../config');
 //const cors = require('cors')
 import sql from "./sql.js";
 
+const express = require('express');
+const router = express.Router();
+
 router.use(function(req, res, next) { // TODO Bad security probably, solve later.
-	res.header("Access-Control-Allow-Origin", config.baseurl+":3000");
+	res.header("Access-Control-Allow-Origin", process.env.baseurl+":3000");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.header('Access-Control-Allow-Methods', 'GET');
 	res.header("Access-Control-Allow-Credentials", "true")

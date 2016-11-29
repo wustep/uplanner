@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const promise = require('bluebird'); // Not using promise rn
+//const promise = require('bluebird'); // TODO: Find out how we can improve this with bluebird?
 const config = require('../config');
 //const cors = require('cors')
 import sql from "./sql.js";

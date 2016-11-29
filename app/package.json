@@ -19,7 +19,8 @@
     "foreman": "^2.0.0",
     "moment": "^2.16.0",
     "mysql2": "^1.1.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "ssh2": "^0.5.4"
   },
   "scripts": {
     "build": "cd client && npm run build",

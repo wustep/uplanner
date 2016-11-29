@@ -4,12 +4,14 @@ const config = require('../config.json');
 var db = null; 
 
 module.exports = {
-	connectDB: function(callback) {
+	connectDB: function(stream, callback) {
+		console.log("SQL: Trying connection")
 		db = mysql.createConnection({
 			host: config.sql.host,
 			user: config.sql.user,
 			password: config.sql.password,
-			database: config.sql.database
+			database: config.sql.database,
+			stream: stream
 		});
 	},
 	getPreferences: function(user, callback) {

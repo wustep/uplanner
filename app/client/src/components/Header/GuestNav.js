@@ -1,16 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import Chip from 'material-ui/Chip';
 
 import config from '../../../../config.json'; // TODO: Might re-think this later...
 
-const style = {
-  margin: 12,
-  color: 'pink',
+const bigTagStyle = {
+  	margin: "10px"
+};
+const subTagDivStyle = {
+	display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center"
+};
+const subTagSyle = {
+	cursor: "pointer",
+	margin: "8px",
+	backgroundColor: "white",
+	borderRadius: "4px"
 };
 //var subButtons;
 
-class BigTagButtons extends Component
-{
+class BigTagButtons extends React.Component {
 	constructor(props) {
 		super(props);
 		this.showOtherBigTagsAcademic = this.showOtherBigTagsAcademic.bind(this);
@@ -23,15 +34,13 @@ class BigTagButtons extends Component
 		  	visibleAthletic: false,
 		  	subButtons: []
 		};
-		
 		var lowerLevelButtons = [
 			<div>
-				{ this.state.visibleAcademic ? <RaisedButton label="Academic" style={style} /> : null }
-				{ this.state.visibleSocial ? <RaisedButton label="Social" style={style} /> : null }
-				{ this.state.visibleAthletic ? <RaisedButton label="Athletic" style={style} /> : null }    
+				{ this.state.visibleAcademic ? <RaisedButton label="Academic" style={bigTagStyle} /> : null }
+				{ this.state.visibleSocial ? <RaisedButton label="Social" style={bigTagStyle} /> : null }
+				{ this.state.visibleAthletic ? <RaisedButton label="Athletic" style={bigTagStyle} /> : null }    
 			</div>
-		];
-		
+		];	
 		this.callApi = this.callApi.bind(this)
 	}
 	showOtherBigTagsAcademic() {
@@ -43,16 +52,14 @@ class BigTagButtons extends Component
 	showOtherBigTagsAthletic() {
 		this.setState({ visibleAthletic: true })
 	}
-	
 	callApi(label) { // TODO: Re make this to be dynamic.
-		
 		let n = 0;
-		if(label == 'Academic'){
-			n=1;
-		}else if (label == 'Social'){
-			n=3;
-		}else{
-			n=2;
+		if (label == 'Academic') {
+			n = 1;
+		} else if (label == 'Social') {
+			n = 3;
+		} else {
+			n = 2;
 		}
 		var that = this;
 		fetch(config.baseurl+':3001/api/bigtags/'+n)
@@ -61,19 +68,13 @@ class BigTagButtons extends Component
 		}).then(function(response) {
 			console.log(response);
 			var temp = [];
-			for(let i=0; i<response.length; i++) {
+			for(let i = 0; i < response.length; i++) {
 				console.log(response[i].name);
-				temp.push(response[i].name);   
-				
- 
+				temp.push(response[i].name);  
 			}
 		   that.setState({subButtons: temp});
 		});
-  
-}
-	   
- 
-	
+	}   
 	render() {
 		var self = this;
 		var buttons = ["Academic", "Social", "Athletic"];
@@ -82,13 +83,14 @@ class BigTagButtons extends Component
 		  <div id="topHalf">
 			I am interested in...
 			{buttons.map(function(name) {
-				return <RaisedButton label={name} onClick={self.callApi.bind(this, name)} style={style} />
+				return <RaisedButton label={name} onClick={self.callApi.bind(this, name)} style={bigTagStyle} />
 			})}
 			<br/>
-			{this.state.subButtons.map(function(name) {
-				return <RaisedButton label={name} onClick={self.props.onClick} style={style} />
-			})}
-			
+			<div style={subTagDivStyle}>
+				{this.state.subButtons.map(function(name) {
+					return <Chip onClick={self.props.onClick} style={subTagSyle}>{name}</Chip>
+				})}
+			</div>	
 		  </div>
 		  
 		);

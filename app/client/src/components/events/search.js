@@ -31,6 +31,11 @@ export default class Search extends Component {
 	handleSubmit(e) {
 		this.props.repopulateEvents(e);
 	}
+	handleKeyPress(e) {
+		if (e.key == 'Enter') {
+			this.props.repopulateEvents(this.props.query);
+		}
+	}
 	render() {
 		return(
 			<div className="Search">
@@ -43,6 +48,7 @@ export default class Search extends Component {
 				  fullWidth={true}
 				  onNewRequest={this.handleSubmit.bind(this)}
 				  value={this.props.query}
+				  onKeyPress={this.handleKeyPress.bind(this)}
 				/>
 				<br/><br/>
 			</div>

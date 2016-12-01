@@ -15,6 +15,8 @@ var sshConfig = {
 	keepAlive: true
 };
 
+// TODO: Improve console logging as to when SQL / SSH connets properly or fails
+
 const serverPort = (process.env.NODE_ENV === 'production') ? process.env.PORT : process.env.SERVER_PORT; // Default to client port for production, needed for Heroku
 console.log(process.env.NODE_ENV + " " + process.env.PORT + " " + process.env.SERVER_PORT); // Debuggin
 
@@ -48,9 +50,10 @@ if (process.env.ssh_tunnel) {
 		  process.env.ssh_localPort,
 		  function (err, stream) {
 			if (err) {
-				console.log("SSH: Forwarding Error")
+				console.log("SSH: Forwarding Error");
 				throw err;
 			}
+			console.log("SSH: Forwarded Out");
 			sql.connectDB(stream); // Connect to SQL here, passing in ssh connection
 		  });
 	}).connect(sshConfig);

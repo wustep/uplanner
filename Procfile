@@ -1,2 +1,2 @@
 build: react-scripts build
-server: babel-node server
+web: babel-node server

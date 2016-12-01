@@ -35,6 +35,10 @@ if (process.env.NODE_ENV === 'production') { // Express only serves static asset
 
 app.use('/api', require('./routes'));
 
+app.get('*', function(req, res) {
+	res.status(404).send('404 - Page not found - If this is a valid link, try again in a little bit!')
+});
+
 
 if (process.env.ssh_tunnel) {
 	// Connect to SSH Tunnel for Namecheap's Remote MySQL

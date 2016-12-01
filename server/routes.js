@@ -6,7 +6,8 @@ const express = require('express');
 const router = express.Router();
 
 router.use(function(req, res, next) { // TODO Bad security probably, solve later.
-	res.header("Access-Control-Allow-Origin", process.env.baseurl+":3000");
+	const port = process.env.port.length > 2 ? ":" + process.env.port : "";
+	res.header("Access-Control-Allow-Origin", process.env.baseurl+port);
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.header('Access-Control-Allow-Methods', 'GET');
 	res.header("Access-Control-Allow-Credentials", "true")

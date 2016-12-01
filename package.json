@@ -34,10 +34,10 @@
     "ssh2": "^0.5.4"
   },
   "scripts": {
-    "dev": "nf start -p 3000 --procfile Procfile.dev",
-    "start": "set NODE_ENV=production & npm run build & nf start server=1 -p 3000",
-    "server": "nf start api=1 --procfile Procfile.dev",
-    "client": "nf start -p 3000 web=1 --procfile Procfile.dev",
+    "dev": "set NODE_ENV=development&nf start --procfile Procfile.dev",
+    "start": "set NODE_ENV=production&nf start",
+    "server": "set NODE_ENV=development&nf start api=1 --procfile Procfile.dev",
+    "client": "set NODE_ENV=development&nf start web=1 --procfile Procfile.dev",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

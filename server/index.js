@@ -15,17 +15,19 @@ var sshConfig = {
 	keepAlive: true
 };
 
-//console.log(process.env.ssh_username + " " + process.env.ssh_localHost + " " + process.env.baseurl);
-
 app.set('port', (process.env.server_port || 3001)); // Default port to 3001, but is found in env
 app.listen(app.get('port'), () => {
-	console.log(`API: Server at: ${process.env.baseurl}:${app.get('port')}/`); // eslint-disable-line no-console
+	console.log(`API: Server at: ${process.env.baseurl}:${app.get('port')}/api`); // eslint-disable-line no-console
 });	
-console.log("API: NODE_ENV = " + process.env.NODE_ENV)
+
+console.log(`API: NODE_ENV: ${process.env.NODE_ENV}`)
+
 if (process.env.NODE_ENV === 'production') { // Express only serves static assets in production
-	console.log('API: Serving static assets in production');
-	app.use(express.static('../build'));
+	console.log('Server: Serving static assets in production');
+	console.log(`Server: Client at: ${process.env.baseurl}:${app.get('port')}/`); // eslint-disable-line no-console
+	app.use('/', express.static('././build'));
 }
+
 app.use('/api', require('./routes'));
 
 

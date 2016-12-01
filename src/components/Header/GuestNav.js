@@ -67,7 +67,6 @@ class BigTagButtons extends React.Component {
 		}).then(function(response) {
 			var temp = [];
 			for(let i = 0; i < response.length; i++) {
-				console.log(response[i].name);
 				temp.push(response[i].name);  
 			}
 		   that.setState({subButtons: temp});

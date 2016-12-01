@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(function(req, res, next) { // TODO Bad security probably, solve later.
 	const origin = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL_PROD : process.env.REACT_APP_URL_DEV; // TODO: Eventually upper-case all env vars
-	res.header("Access-Control-Allow-Origin", process.env.); // TODO: Prob need to fix for Heroku, given that the url would just be the base.
+	res.header("Access-Control-Allow-Origin", origin); // TODO: Prob need to fix for Heroku, given that the url would just be the base.
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.header('Access-Control-Allow-Methods', 'GET');
 	res.header("Access-Control-Allow-Credentials", "true")

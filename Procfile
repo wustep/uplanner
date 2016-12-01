@@ -1,2 +1,1 @@
-build: react-scripts build
-web: babel-node server
+web: react-scripts build & babel-node server

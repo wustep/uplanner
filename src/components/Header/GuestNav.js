@@ -1,8 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chip from 'material-ui/Chip';
-
-import config from '../../../../config.json'; // TODO: Might re-think this later...
+require('dotenv').config();
 
 const bigTagStyle = {
   	margin: "10px"
@@ -62,11 +61,10 @@ class BigTagButtons extends React.Component {
 			n = 2;
 		}
 		var that = this;
-		fetch(config.baseurl+':3001/api/bigtags/'+n)
+		fetch(process.env.REACT_APP_API + '/bigtags/' + n)
 		.then(function(response) {
 			return response.json();
 		}).then(function(response) {
-			console.log(response);
 			var temp = [];
 			for(let i = 0; i < response.length; i++) {
 				console.log(response[i].name);

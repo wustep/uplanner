@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AutoComplete from 'material-ui/AutoComplete';
 
-import config from '../../../../config.json'; // TODO: Might re-think this later...
-
 function searchEvents(q) {
-	return fetch(config.baseurl+":3001/api/events/" + q).then(function(response) { return response.json(); });
+	return fetch(process.env.REACT_APP_API + "/events/" + q).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {

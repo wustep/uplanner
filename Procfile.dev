@@ -1,2 +1,2 @@
-client: cd client && npm start
-server: babel-node server
+web: react-scripts start
+api: babel-node server

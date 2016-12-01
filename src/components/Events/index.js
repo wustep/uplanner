@@ -4,10 +4,9 @@ import './Events.css';
 import moment from 'moment';
 import Search from './Search';
 import EventCard from './EventCard';
-import config from '../../../../config.json'; // TODO: Might re-think this later...
 
 function getEvents(query="") {
-	return fetch(config.baseurl+":3001/api/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
+	return fetch(process.env.REACT_APP_API + "/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
 		return json;
 	});
 }

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AutoComplete from 'material-ui/AutoComplete';
 
+var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
+
 function searchEvents(q) {
-	return fetch(process.env.REACT_APP_API + "/events/" + q).then(function(response) { return response.json(); });
+	return fetch(apiURL + "/events/" + q).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {

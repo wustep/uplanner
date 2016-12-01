@@ -1,7 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chip from 'material-ui/Chip';
-require('dotenv').config();
+
+var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
 const bigTagStyle = {
   	margin: "10px"
@@ -61,7 +62,7 @@ class BigTagButtons extends React.Component {
 			n = 2;
 		}
 		var that = this;
-		fetch(process.env.REACT_APP_API + '/bigtags/' + n)
+		fetch(apiURL + '/bigtags/' + n)
 		.then(function(response) {
 			return response.json();
 		}).then(function(response) {

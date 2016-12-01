@@ -5,12 +5,13 @@ import moment from 'moment';
 import Search from './Search';
 import EventCard from './EventCard';
 
+var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
+
 function getEvents(query="") {
-	return fetch(process.env.REACT_APP_API + "/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
+	return fetch(apiURL + "/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
 		return json;
 	});
 }
-
 
 function parseEvents(data) { // TODO: Make this into a legit component?
 	var out = [];
@@ -22,7 +23,6 @@ function parseEvents(data) { // TODO: Make this into a legit component?
 	}
 	return out;
 }
-
 
 export default class Events extends React.Component {
 	constructor(props) {

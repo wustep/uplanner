@@ -15,8 +15,9 @@ var sshConfig = {
 	keepAlive: true
 };
 
-const serverPort = (process.env.NODE_ENV === 'production') ? process.env.port : process.env.server_port; // Default to client port for production, needed for Heroku
-console.log(serverPort + " " + process.env.port + " " + process.env.PORT + " " + process.env.server_port);
+const serverPort = (process.env.NODE_ENV === 'production') ? process.env.PORT : process.env.SERVER_PORT; // Default to client port for production, needed for Heroku
+console.log(process.env.NODE_ENV + " " + process.env.PORT + " " + process.env.SERVER_PORT); // Debuggin
+
 app.set('port', (serverPort || 3001)); // Default port to 3001, but is found in env
 app.listen(app.get('port'), () => {
 	console.log(`API: Server at: ${process.env.baseurl}:${app.get('port')}/api`); // eslint-disable-line no-console

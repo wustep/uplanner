@@ -5,17 +5,19 @@ import AutoComplete from 'material-ui/AutoComplete';
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
 function searchEvents(q) {
-	return fetch(apiURL + "/events/" + q).then(function(response) { return response.json(); });
+	return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dataSource: []
+			dataSource: [],
+			query: ""
 		};
 	}
 	handleUpdateInput = (value) => {
+		this.setState({query : value});
 		var that = this;
 		searchEvents(value).then(function(data) {
 			var out = [];
@@ -28,12 +30,14 @@ export default class Search extends Component {
 			that.setState({dataSource: out});
 		});
 	}
-	handleSubmit(e) {
+	handleSubmit(e) { 
+		console.log("SUBMIT");
 		this.props.repopulateEvents(e);
 	}
 	handleKeyPress(e) {
-		if (e.key == 'Enter') {
-			this.props.repopulateEvents(this.props.query);
+		if (e.key == 'Enter' && this.state.query.length == 0) { // This is since submit doesn't work on empty input
+			console.log("ENTER");
+			this.props.repopulateEvents();
 		}
 	}
 	render() {
@@ -47,7 +51,7 @@ export default class Search extends Component {
 				  maxSearchResults={5}
 				  fullWidth={true}
 				  onNewRequest={this.handleSubmit.bind(this)}
-				  value={this.props.query}
+				  searchText={this.state.query}
 				  onKeyPress={this.handleKeyPress.bind(this)}
 				/>
 				<br/><br/>

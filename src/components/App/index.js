@@ -54,8 +54,6 @@ export default class App extends React.Component {
 	 handleClick(e) {
 		e.preventDefault();
 		this.setState({ limit: true })
-		console.log(e);
-		console.log(this.props);
 	  }
 
 	render() {

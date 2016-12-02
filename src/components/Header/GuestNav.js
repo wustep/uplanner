@@ -58,20 +58,21 @@ class BigTagButtons extends React.Component {
 			n = 1;
 		} else if (label == 'Social') {
 			n = 3;
-		} else {
+		} else if (label == 'Athletic') {
 			n = 2;
 		}
-		var that = this;
-		fetch(apiURL + '/bigtags/' + n)
-		.then(function(response) {
-			return response.json();
-		}).then(function(response) {
-			var temp = [];
-			for(let i = 0; i < response.length; i++) {
-				temp.push(response[i].name);  
-			}
-		   that.setState({subButtons: temp});
-		});
+		if (n != 0) {
+			var that = this;
+			fetch(apiURL + '/bigtags/' + n).then(function(response) {
+				return response.json();
+			}).then(function(response) {
+				var temp = [];
+				for(let i = 0; i < response.length; i++) {
+					temp.push(response[i].name);  
+				}
+			   that.setState({subButtons: temp});
+			});
+		}
 	}   
 	render() {
 		var self = this;

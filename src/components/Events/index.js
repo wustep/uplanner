@@ -8,7 +8,7 @@ import EventCard from './EventCard';
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
 function getEvents(query="") {
-	return fetch(apiURL + "/events/" + query).then(function(response) { return response.json(); }).then(function(json) {
+	return fetch(apiURL + "/events/" + encodeURIComponent(query)).then(function(response) { return response.json(); }).then(function(json) {
 		return json;
 	});
 }
@@ -28,8 +28,7 @@ export default class Events extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			events: [],
-			query: ""
+			events: []
 		};
 		var self = this;
 		getEvents().then(function(data) {
@@ -50,7 +49,7 @@ export default class Events extends React.Component {
 		} else {
 			return (
 				<div className="Events">
-					<Search query={this.state.query} repopulateEvents={this.repopulateEvents.bind(this)}/>
+					<Search repopulateEvents={this.repopulateEvents.bind(this)}/>
 					{this.state.events}
 				</div>
 			);

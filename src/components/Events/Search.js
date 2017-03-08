@@ -31,12 +31,10 @@ export default class Search extends Component {
 		});
 	}
 	handleSubmit(e) { 
-		console.log("SUBMIT");
 		this.props.repopulateEvents(e);
 	}
 	handleKeyPress(e) {
 		if (e.key == 'Enter' && this.state.query.length == 0) { // This is since submit doesn't work on empty input
-			console.log("ENTER");
 			this.props.repopulateEvents();
 		}
 	}

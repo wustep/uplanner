@@ -18,7 +18,6 @@ var sshConfig = {
 // TODO: Improve console logging as to when SQL / SSH connets properly or fails
 
 const serverPort = (process.env.NODE_ENV === 'production') ? process.env.PORT : process.env.SERVER_PORT; // Default to client port for production, needed for Heroku
-console.log(process.env.NODE_ENV + " " + process.env.PORT + " " + process.env.SERVER_PORT); // Debuggin
 
 app.set('port', (serverPort || 3001)); // Default port to 3001, but is found in env
 app.listen(app.get('port'), () => {

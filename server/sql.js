@@ -12,6 +12,13 @@ module.exports = {
 			database: process.env.sql_database,
 			stream: stream
 		});
+		db.connect(function(err) {
+			if (err) {
+				console.log("SQL: Error connecting: " + err.stack);
+				return;
+			}
+			console.log("SQL: Connected as " + db.threadId);
+		});
 	},
 	getPreferences: function(user, callback) {
 		db.query("SELECT * FROM `users_preferences` WHERE user_id = ?", [user], function(err, results) {

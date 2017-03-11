@@ -24,26 +24,11 @@ const subTagSyle = {
 class BigTagButtons extends React.Component {
 	constructor(props) {
 		super(props);
-		this.showOtherBigTagsAcademic = this.showOtherBigTagsAcademic.bind(this);
-		this.showOtherBigTagsSocial = this.showOtherBigTagsSocial.bind(this);
-		this.showOtherBigTagsAthletic = this.showOtherBigTagsAthletic.bind(this);
 		this.state = {
 		  	output: "",
-		  	visibleAcademic: false,
-		  	visibleSocial: false,
-		  	visibleAthletic: false,
 		  	subButtons: []
 		};
 		this.callApi = this.callApi.bind(this)
-	}
-	showOtherBigTagsAcademic() {
-		this.setState({ visibleAcademic: true })
-	}
-	showOtherBigTagsSocial() {
-		this.setState({ visibleSocial: true })
-	}
-	showOtherBigTagsAthletic() {
-		this.setState({ visibleAthletic: true })
 	}
 	callApi(label, index) { // TODO: Re make this to be dynamic.
 		var that = this;
@@ -65,12 +50,12 @@ class BigTagButtons extends React.Component {
 		  <div id="guestNav">
 			I am interested in...
 			{buttons.map(function(name, index) {
-				return <RaisedButton key={"BigTag" + index} id={index} label={name} onClick={self.callApi.bind(this, name, index + 1)} style={bigTagStyle} />
+				return <RaisedButton key={index} id={index} label={name} onClick={self.callApi.bind(this, name, index + 1)} style={bigTagStyle} />
 			})}
 			<br/>
 			<div style={subTagDivStyle}>
-				{this.state.subButtons.map(function(name) {
-					return <Chip onClick={self.props.onClick} style={subTagSyle}>{name}</Chip>
+				{this.state.subButtons.map(function(name, index) {
+					return <Chip key={index} onClick={self.props.onClick} style={subTagSyle}>{name}</Chip>
 				})}
 			</div>	
 		  </div>

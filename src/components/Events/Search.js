@@ -5,7 +5,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
 function searchEvents(q) {
-	return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); });
+	return fetch(apiURL + "/events/" + q).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {
@@ -34,7 +34,7 @@ export default class Search extends Component {
 		this.props.repopulateEvents(e);
 	}
 	handleKeyPress(e) {
-		if (e.key == 'Enter' && this.state.query.length == 0) { // This is since submit doesn't work on empty input
+		if (e.key === 'Enter' && this.state.query.length === 0) { // This is since submit doesn't work on empty input
 			this.props.repopulateEvents();
 		}
 	}

@@ -1,10 +1,8 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
 import LogoBanner from '../../img/combined.png';
-import RegisterButton from "./RegisterButton";
-import InformationButton from "./InformationButton";
+import Register from "./Register";
+import Info from "./Info";
 
 
 const AppBarStyle = {
@@ -22,8 +20,8 @@ export default class AppBarExampleIcon extends React.Component {
 	render() { // TODO: Update ports to be dynamic as well!
 		return (
 			<AppBar title={<a href="./"><img alt='Logo Banner' className="App-banner" src={LogoBanner}/></a>}
-					iconElementLeft={<InformationButton />} style={AppBarStyle}
-					iconElementRight={this.state.logged ? "" : <div className="LoginRegisterButtons"><RegisterButton /></div>} 
+					iconElementLeft={<Info />} style={AppBarStyle}
+					iconElementRight={this.state.logged ? "" : <Register />} 
 			/>
 		);
 	}

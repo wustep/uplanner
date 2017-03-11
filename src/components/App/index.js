@@ -16,10 +16,8 @@ import {fade} from 'material-ui/utils/colorManipulator';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-import RegisterButton from '../Header/RegisterButton';
 import GuestNav from '../Header/GuestNav';
 import Events from '../Events/';
-import InformationButton from '../Header/InformationButton';
 import AppTopBar from '../Header/AppTopBar';
 import LogoBanner from '../../img/combined.png';
 

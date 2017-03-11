@@ -13,7 +13,7 @@ function parseSingleDate(val) {
 
 export default class EventCard extends React.Component {
 	render() {
-		const desc = this.props.desc != "null" && this.props.desc.length > 3 ? this.props.desc : "";
+		const desc = this.props.desc !== "null" && this.props.desc.length > 3 ? this.props.desc : "";
 		const expand = desc !== "";
 		const sub = (this.props.time_start !== "" ? parseSingleDate(this.props.time_start) : "") + (this.props.location.length > 0 ? ", " : "") + this.props.location;
 		return(

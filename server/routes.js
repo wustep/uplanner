@@ -21,7 +21,7 @@ router.get('/', (req,res) => {
 // Get all "largest" big tags for guests
 router.get('/bigtags', (req,res) => {
 	sql.getBigTags(0, function(err, results) {
-		if (err) { res.send(500, "Server Error"); return; }
+		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
 });
@@ -31,7 +31,7 @@ router.get('/bigtags/:parentid', (req, res) => {
 	let {parentid} = req.params;
 	if (!isNaN(parentid)) { // TODO Bad security check for int, improve later
 		sql.getBigTags(parentid, function(err, results) {
-			if (err) { res.send(500, "Server Error"); return; }
+			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
 		});
 	} else {
@@ -44,7 +44,7 @@ router.get('/pref/:userid', (req, res) => {
 	let {userid} = req.params;
 	if (!isNaN(userid)) {
 		sql.getPreferences(userid, function(err, results) {
-			if (err) { res.send(500, "Server Error"); return; }
+			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
 		});
 	} else {
@@ -55,7 +55,7 @@ router.get('/pref/:userid', (req, res) => {
 // Get all events
 router.get('/events', (req, res) => {
 	sql.getEvents(null, function(err, results) {
-		if (err) { res.send(500, "Server Error"); return; }
+		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
 });
@@ -64,6 +64,7 @@ router.get('/events', (req, res) => {
 router.get('/events/:query', (req, res) => {
 	let {query} = req.params;
 	sql.searchEvents(decodeURIComponent(query.toLowerCase()), function(err, results) {
+		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
 });

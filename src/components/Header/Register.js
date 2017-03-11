@@ -7,12 +7,6 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-const styles = {
-	radioButton: {
-		marginTop: 16,
-	},
-};
-
 /**
  * Dialog content can be scrollable.
  */
@@ -44,11 +38,10 @@ export default class DialogExampleScrollable extends React.Component {
 						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Verify Password" type='password' floatingLabelFixed={true} /><br />
 						<SelectField floatingLabelText="Type of User"value={this.state.value} onChange={this.handleChange} autoWidth={true}>
-							<MenuItem value={1} primaryText="" />	
-							<MenuItem value={2} primaryText="Undergraduate Student" />
-							<MenuItem value={3} primaryText="Graduate Student" />
-							<MenuItem value={4} primaryText="Staff/Faculty Member" />
-							<MenuItem value={5} primaryText="Other" />
+							<MenuItem value={1} primaryText="Undergraduate Student" />
+							<MenuItem value={2} primaryText="Graduate Student" />
+							<MenuItem value={3} primaryText="Staff/Faculty Member" />
+							<MenuItem value={4} primaryText="Other" />
 						</SelectField><br />
 						<RaisedButton id='signupButton' label="Register" /></div>
 					<div id='right_side'>

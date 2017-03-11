@@ -20,17 +20,19 @@ class Scraper extends Component {
 	}
 	populateOutput(e) {
 		this.setState({ showOutput: true });
-		if (this.state.url.includes("teamup")) {
+		if (this.state.url.includes("teamup.com/")) {
+			var calStart = this.state.url.indexOf(".com/") + 5;
+			var cal = this.state.url.substr(calStart, calStart + 24);
 			var startDate = "2016-10-1";
 			var endDate = "2016-11-31";
 			var that = this;
-			TeamUp.makeCorsRequest('https://api.teamup.com/kse89a84dcb543ed5e/events?startDate='+startDate+'&endDate='+endDate, function(res) {
+			TeamUp.makeCorsRequest('https://api.teamup.com/' + cal + '/events?startDate='+startDate+'&endDate='+endDate, function(res) {
 				var out = TeamUp.generateSQL(JSON.parse(res.responseText), that.state.url);
 				return that.setState({ output: out });
 			});
-		} else {
-			this.setState({ output: "Error: Invalid link type!" })
-		}
+			return;
+		} 
+		this.setState({ output: "Error: Invalid link type!" })
 	}
 	handleLinkChange(e) {
 		this.setState({ url: e.target.value })

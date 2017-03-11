@@ -1,17 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-
-const styles = {
-	radioButton: {
-		marginTop: 16,
-	},
-};
 
 /**
  * Dialog content can be scrollable.
@@ -40,7 +29,7 @@ export default class DialogExampleScrollable extends React.Component {
 			<div id='informationButton'>
 				<FlatButton label="Information" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog
-					title = 'About this app'
+					title='About this app'
 					actions={actions}
 					modal={false}
 					open={this.state.open}

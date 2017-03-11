@@ -1,16 +1,13 @@
 {
   "name": "uplanner",
   "version": "0.1.0",
-  "description": "2016 OHI/O Hackathon: personalized event digest",
+  "description": "Curated university event digest",
   "private": true,
   "babel": {
     "presets": [
       "es2015",
       "stage-0"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^3.1.0"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",

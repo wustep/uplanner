@@ -14,7 +14,7 @@ export default class Admin extends Component {
 		this.populateOutput = this.populateOutput.bind(this);
 		this.handleLinkChange = this.handleLinkChange.bind(this);
 		this.state = {
-			setting: 2,
+			setting: 0,
 			output: "",
 			url: "",
 		 	showOutput: false
@@ -39,29 +39,32 @@ export default class Admin extends Component {
 	handleLinkChange(e) {
 		this.setState({ url: e.target.value })
 	}
+	swapAdminView(n) {
+		this.setState({ setting: n });
+	}
 	render() {
 		const {populateOutput, handleLinkChange} = this;
 		let content = "";
-		if (this.state.setting === 1) {
-
-		} else if (this.state.setting === 2) {
+		if (this.state.setting === 0) {
+			content = "adminView";
+		} else if (this.state.setting === 1) {
 			content = 
 				<div id="scraper">
 					<TextField id="link" hintText="Link" value={this.state.url} onChange={this.handleLinkChange} />
 					<br />
 					<RaisedButton className="populateBtn" label="Populate" onClick={populateOutput} primary={true} />
 					<br /><br />
-					{ this.state.showOutput ? <textarea className="output" value={this.state.output.replace(/\\n/g,'\n')} /> : null }
+					{ this.state.showOutput ? <textarea id="output" value={this.state.output.replace(/\\n/g,'\n')} /> : null }
 				</div>;
 						
 		}
 
 		return (
 			<MuiTheme>
-				<div className="App">
+				<div className="app">
 					<AppTopBar />
-					<AdminNav/>
-					<Paper id="Admin">
+					<AdminNav swapAdminView={this.swapAdminView.bind(this)}/>
+					<Paper id="admin">
 						{content}
 					</Paper>
 				</div>

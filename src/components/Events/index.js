@@ -1,7 +1,6 @@
 import React from 'react';
 import fetch from 'node-fetch';
 import './Events.css';
-import moment from 'moment';
 import Search from './Search';
 import EventCard from './EventCard';
 

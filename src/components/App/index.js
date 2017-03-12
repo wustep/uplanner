@@ -32,10 +32,10 @@ export default class App extends React.Component {
 		if (loggedIn) {
 			return (
 				<MuiTheme>
-					<div className="App">
+					<div className="app">
 						<AppTopBar />		
 						<GuestNav onClick={this.handleClick.bind(this)}/>
-						<div className="App-intro" id='lowerHalf'>
+						<div className="app-intro" id='lowerHalf'>
 							<Events limit={this.state.limit} />
 						</div>
 					</div>

@@ -18,20 +18,23 @@ export default class AdminNav extends Component {
 		selectedIndex: 0,
 	};
 
-  select = (index) => this.setState({selectedIndex: index});
+  select = (index) => {
+    this.setState({selectedIndex: index})
+    this.props.swapAdminView(index);
+  };
 
   render() {
     return (
       <Paper zDepth={1}>
         <BottomNavigation id="adminNav" style={style} selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
-            label="Scraper"
-            icon={scraperIcon}
+            label="Admin"
+            icon={adminIcon}
             onTouchTap={() => this.select(0)}
           />
           <BottomNavigationItem
-            label="Admin"
-            icon={adminIcon}
+            label="Scraper"
+            icon={scraperIcon}
             onTouchTap={() => this.select(1)}
           />
         </BottomNavigation>

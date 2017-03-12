@@ -1,9 +1,9 @@
-//const promise = require('bluebird'); // TODO: Find out how we can improve this with bluebird?
-//const cors = require('cors')
 import sql from "./sql.js";
+import apicache from 'apicache'
 
 const express = require('express');
 const router = express.Router();
+let cache = apicache.middleware
 
 router.use(function(req, res, next) { // TODO Bad security probably, solve later.
 	const origin = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL_PROD : process.env.REACT_APP_URL_DEV; // TODO: Eventually upper-case all env vars
@@ -14,12 +14,12 @@ router.use(function(req, res, next) { // TODO Bad security probably, solve later
 	next();
 });
 
-router.get('/', (req,res) => {
-	res.send('Events API');
+router.get('/', cache('7 days'), (req,res) => {
+	res.send('UPlanner Events API');
 });
 
 // Get all "largest" big tags for guests
-router.get('/bigtags', (req,res) => {
+router.get('/bigtags', cache('7 days'), (req,res) => {
 	sql.getBigTags(0, function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
@@ -27,7 +27,7 @@ router.get('/bigtags', (req,res) => {
 });
 
 // Get "big tags" children of parent
-router.get('/bigtags/:parentid', (req, res) => {
+router.get('/bigtags/:parentid', cache('7 days'), (req, res) => {
 	let {parentid} = req.params;
 	if (!isNaN(parentid)) { // TODO Bad security check for int, improve later
 		sql.getBigTags(parentid, function(err, results) {
@@ -40,7 +40,7 @@ router.get('/bigtags/:parentid', (req, res) => {
 });
 
 // Get preferences of a user
-router.get('/pref/:userid', (req, res) => {
+router.get('/pref/:userid', cache('30 minutes'), (req, res) => {
 	let {userid} = req.params;
 	if (!isNaN(userid)) {
 		sql.getPreferences(userid, function(err, results) {
@@ -53,15 +53,15 @@ router.get('/pref/:userid', (req, res) => {
 });
 
 // Get all events
-router.get('/events', (req, res) => {
+router.get('/events', cache('3 minutes'), (req, res) => {
 	sql.getEvents(null, function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
 });
 
-// Get events based on preferences, use algorithim, TBD
-router.get('/events/:query', (req, res) => {
+// Get events based on search query
+router.get('/events/:query', cache('10 minutes'), (req, res) => {
 	let {query} = req.params;
 	sql.searchEvents(decodeURIComponent(query.toLowerCase()), function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }

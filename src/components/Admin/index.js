@@ -54,9 +54,8 @@ export default class Admin extends Component {
 					<br />
 					<RaisedButton className="populateBtn" label="Populate" onClick={populateOutput} primary={true} />
 					<br /><br />
-					{ this.state.showOutput ? <textarea id="output" value={this.state.output.replace(/\\n/g,'\n')} /> : null }
-				</div>;
-						
+					{ this.state.showOutput ? <TextField id="output" value={this.state.output.replace(/\\n/g,'\n')} /> : null }
+				</div>;		
 		}
 
 		return (

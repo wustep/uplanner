@@ -43,7 +43,7 @@ export default class Events extends React.Component {
 	}
 	render() {
 		if (this.props.limit) {
-		return(
+			return (
 				<div className="Events"><Search/>{this.state.events.slice(0,3)}</div>
 			);
 		} else {

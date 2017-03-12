@@ -49,32 +49,29 @@ export default class App extends React.Component {
 		}
 	}
 
-	 handleClick(e) {
+	handleClick(e) {
 		e.preventDefault();
 		this.setState({ limit: true })
 	  }
 
 	render() {
-	
-	let loggedIn = true;
-	  
-	if (loggedIn) {
-		return (
-			<MuiThemeProvider muiTheme={muiTheme}>
-				<div className="App">
-					<AppTopBar />		
-					<GuestNav onClick={this.handleClick.bind(this)}/>
-					<div className="App-intro" id='lowerHalf'>
-						<Events limit={this.state.limit} />
+		let loggedIn = true;
+		if (loggedIn) {
+			return (
+				<MuiThemeProvider muiTheme={muiTheme}>
+					<div className="App">
+						<AppTopBar />		
+						<GuestNav onClick={this.handleClick.bind(this)}/>
+						<div className="App-intro" id='lowerHalf'>
+							<Events limit={this.state.limit} />
+						</div>
 					</div>
-				</div>
-			</MuiThemeProvider>
-		);
-	} else {
-		return (
-			<div>Guest View</div> // TBD
-		)
-	}
-	
-  }
+				</MuiThemeProvider>
+			);
+		} else {
+			return (
+				<div>Guest View</div> // TBD
+			)
+		}
+  	}
 }

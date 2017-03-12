@@ -32,7 +32,7 @@ export default class DialogExampleScrollable extends React.Component {
 				<FlatButton label="Register/Log in" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog actions={actions} modal={false} open={this.state.open}
 						onRequestClose={this.handleClose} autoScrollBodyContent={true}>
-					<div id='left_side'>
+					<div id='leftRegister'>
 						<h1 id='register_title'>Register</h1><br />
 						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
@@ -44,7 +44,7 @@ export default class DialogExampleScrollable extends React.Component {
 							<MenuItem value={4} primaryText="Other" />
 						</SelectField><br />
 						<RaisedButton id='signupButton' label="Register" /></div>
-					<div id='right_side'>
+					<div id='rightRegister'>
 						<h1 id='register_title'>Log In</h1><br />
 						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />

@@ -30,7 +30,7 @@ class BigTagButtons extends React.Component {
 		};
 		this.callApi = this.callApi.bind(this)
 	}
-	callApi(label, index) { // TODO: Re make this to be dynamic.
+	callApi(label, index) {
 		var that = this;
 		fetch(apiURL + '/bigtags/' + index).then(function(response) {
 			return response.json();
@@ -44,7 +44,7 @@ class BigTagButtons extends React.Component {
 	}   
 	render() {
 		var self = this;
-		var buttons = ["Academic", "Social", "Athletic"];
+		var buttons = ["Academic", "Social", "Athletic"]; // TODO: Change this to not be hard-coded
 		
 		return(
 		  <div id="guestNav">

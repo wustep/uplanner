@@ -4,11 +4,11 @@ import { Router, Route, browserHistory } from 'react-router';
 
 import './index.css';
 import App from './components/App/';
-import Scraper from './components/Scraper/';
+import Admin from './components/Admin/';
 
 ReactDOM.render((
 	<Router history={browserHistory}>
-		<Route path="scraper" component={Scraper}/>
+		<Route path="admin" component={Admin}/>
 		<Route path="s/:query" component={App}/>
 		<Route path="*" component={App}/>
 	</Router>

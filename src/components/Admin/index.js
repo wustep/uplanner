@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import "./scraper.css";
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
-import {fullWhite} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import TeamUp from './teamup.js';
+import MuiTheme from '../App/MuiTheme.js';
+import AppTopBar from '../Header/AppTopBar.js';
+import AdminNav from './AdminNav.js';
+import Paper from 'material-ui/Paper';
 
-class Scraper extends Component {
+export default class Admin extends Component {
 	constructor(props) {
 		super(props);
 		this.populateOutput = this.populateOutput.bind(this);
 		this.handleLinkChange = this.handleLinkChange.bind(this);
 		this.state = {
-		  output: "",
-		  url: "",
-		  showOutput: false
+			setting: 2,
+			output: "",
+			url: "",
+		 	showOutput: false
 		};
 	}
 	populateOutput(e) {
@@ -39,18 +41,31 @@ class Scraper extends Component {
 	}
 	render() {
 		const {populateOutput, handleLinkChange} = this;
-		return (
-			<MuiThemeProvider>
-				<div className="Scraper">
+		let content = "";
+		if (this.state.setting === 1) {
+
+		} else if (this.state.setting === 2) {
+			content = 
+				<div id="scraper">
 					<TextField id="link" hintText="Link" value={this.state.url} onChange={this.handleLinkChange} />
 					<br />
 					<RaisedButton className="populateBtn" label="Populate" onClick={populateOutput} primary={true} />
 					<br /><br />
 					{ this.state.showOutput ? <textarea className="output" value={this.state.output.replace(/\\n/g,'\n')} /> : null }
+				</div>;
+						
+		}
+
+		return (
+			<MuiTheme>
+				<div className="App">
+					<AppTopBar />
+					<AdminNav/>
+					<Paper id="Admin">
+						{content}
+					</Paper>
 				</div>
-			</MuiThemeProvider>
+			</MuiTheme>
 		);
    }
 }
-
-export default Scraper;

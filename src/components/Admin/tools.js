@@ -1,5 +1,5 @@
+
 module.exports = {
-	
 	sql_escape: function(str) { // From: http://stackoverflow.com/a/7760578
 		return (str!==null) ? str.replace(/[\0\x08\x09\x1a\n\r"'\\%]/g, function (char) {
 			switch (char) {

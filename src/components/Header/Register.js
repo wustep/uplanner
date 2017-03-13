@@ -7,6 +7,9 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle';
+const registerIcon = <ActionAccountCircle />;
+
 /**
  * Dialog content can be scrollable.
  */
@@ -29,11 +32,11 @@ export default class DialogExampleScrollable extends React.Component {
 		const actions = [];
 		return (
 			<div id="registerButton">
-				<FlatButton label="Register/Log in" secondary={true} onTouchTap={this.handleOpen} />
+				<FlatButton icon={registerIcon} label="Register/Log in" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog actions={actions} modal={false} open={this.state.open}
 						onRequestClose={this.handleClose} autoScrollBodyContent={true}>
 					<div id='leftRegister'>
-						<h1 id='register_title'>Register</h1><br />
+						<h1>Register</h1><br />
 						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Verify Password" type='password' floatingLabelFixed={true} /><br />
@@ -45,7 +48,7 @@ export default class DialogExampleScrollable extends React.Component {
 						</SelectField><br />
 						<RaisedButton id='signupButton' label="Register" /></div>
 					<div id='rightRegister'>
-						<h1 id='register_title'>Log In</h1><br />
+						<h1>Log In</h1><br />
 						<TextField hintText="" floatingLabelText="Email" floatingLabelFixed={true} /><br />
 						<TextField hintText="" floatingLabelText="Password" type='password' floatingLabelFixed={true} /><br />
 						<RaisedButton id='signupButton' label="Log in" />

@@ -1,4 +1,4 @@
-import tools from './tools.js';
+import tools from './Tools.js';
 
 module.exports = {
 	// Creates a CORS request in a cross-browser manner (from teamup API website)

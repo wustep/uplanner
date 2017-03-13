@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import "./scraper.css";
+import "./Scraper.css";
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import TeamUp from './teamup.js';
+import TeamUp from './Teamup.js';
 import MuiTheme from '../App/MuiTheme.js';
 import AppTopBar from '../Header/AppTopBar.js';
 import AdminNav from './AdminNav.js';

@@ -1,0 +1,58 @@
+#leftRegister {
+    float: left;
+}
+
+#rightRegister {    
+    float: right;
+}
+
+#leftRegister h1, #rightRegister h1 {
+    text-align: center;
+}
+
+#signupButton {
+    text-align: center;
+}
+
+#registerButton {
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#informationButton {
+    position:absolute;
+    top: 20px;
+    left: 20px;
+}
+
+
+#guestNav {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    margin: 0;
+    background-color: #17a574;
+    box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    color: #d0ffef;
+}
+
+.app-banner {
+  width: 210px;
+  text-align: center;
+}
+
+.app-logo {
+    display: none;
+}
+
+@media only screen and (max-width: 610px){           
+    .app-logo {
+        height: 64px;
+        width: 64px;
+        display: inline-block;
+        text-align: center;
+    }
+    .app-banner {
+        display: none;
+    }
+}

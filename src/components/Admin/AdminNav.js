@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+import ActionFindInPage from 'material-ui/svg-icons/action/find-in-page';
 import SocialPerson from 'material-ui/svg-icons/social/person';
 
-const scraperIcon = <IconLocationOn />;
+const scraperIcon = <ActionFindInPage />;
 const adminIcon = <SocialPerson />;
 
 const style={

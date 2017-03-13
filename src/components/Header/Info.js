@@ -2,6 +2,10 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
+import ActionInfo from 'material-ui/svg-icons/action/info';
+
+const infoIcon = <ActionInfo />;
+
 /**
  * Dialog content can be scrollable.
  */
@@ -27,7 +31,7 @@ export default class DialogExampleScrollable extends React.Component {
 		];
 		return (
 			<div id='informationButton'>
-				<FlatButton label="Information" secondary={true} onTouchTap={this.handleOpen} />
+				<FlatButton icon={infoIcon} label="Information" secondary={true} onTouchTap={this.handleOpen} />
 				<Dialog
 					title='About this app'
 					actions={actions}

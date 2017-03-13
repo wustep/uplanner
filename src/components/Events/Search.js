@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AutoComplete from 'material-ui/AutoComplete';
 
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
-function searchEvents(q) {
-	return fetch(apiURL + "/events/" + q).then(function(response) { return response.json(); });
+function searchEvents(q="") {
+	return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); });
 }
 
 export default class Search extends Component {
@@ -18,17 +17,21 @@ export default class Search extends Component {
 	}
 	handleUpdateInput = (value) => {
 		this.setState({query : value});
-		var that = this;
-		searchEvents(value).then(function(data) {
-			var out = [];
-			for (var i = 0; i < data.length && i < 15; i++) {
-				var name = data[i]["name"];
-				if (name !== "null") {
-					out.push(name);
+		if (this.state.query.length > 2) { // TODO: This doesn't seem to always work on suppressing dropdown, but it's fine for now.
+			var that = this;
+			searchEvents(value).then(function(data) {
+				var out = [];
+				for (var i = 0; i < data.length && i < 15; i++) {
+					var name = data[i]["name"];
+					if (name !== "null") {
+						out.push(name);
+					}
 				}
-			}
-			that.setState({dataSource: out});
-		});
+				that.setState({dataSource: out});
+			});
+		} else {
+			this.setState({dataSource: []});
+		}
 	}
 	handleSubmit(e) { 
 		this.props.repopulateEvents(e);

@@ -1,6 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chip from 'material-ui/Chip';
+import './Header.css';
 
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
@@ -48,7 +49,7 @@ class BigTagButtons extends React.Component {
 		
 		return(
 		  <div id="guestNav">
-			I am interested in...
+			<span id="interested-in">I am interested in...</span>
 			{buttons.map(function(name, index) {
 				return <RaisedButton key={index} id={index} label={name} onClick={self.callApi.bind(this, name, index + 1)} style={bigTagStyle} />
 			})}

@@ -21,30 +21,29 @@ export default class App extends React.Component {
 			limit: false
 		}
 	}
-
-	handleClick(e) {
-		e.preventDefault();
+	
+	guestPop(e) {
 		this.setState({ limit: true })
-	  }
+	}
 
 	render() {
-		let loggedIn = true;
+		let loggedIn = false;
 		if (loggedIn) {
+			return (
+				<div>User View</div> // TBD
+			)
+		} else {
 			return (
 				<MuiTheme>
 					<div className="app">
 						<AppTopBar />		
-						<GuestNav onClick={this.handleClick.bind(this)}/>
+						<GuestNav guestPop={this.guestPop.bind(this)}/>
 						<div className="app-intro" id='lowerHalf'>
 							<Events limit={this.state.limit} />
 						</div>
 					</div>
 				</MuiTheme>
 			);
-		} else {
-			return (
-				<div>Guest View</div> // TBD
-			)
 		}
   	}
 }

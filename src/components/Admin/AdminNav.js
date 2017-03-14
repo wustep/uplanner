@@ -8,8 +8,8 @@ const scraperIcon = <ActionFindInPage />;
 const adminIcon = <SocialPerson />;
 
 const style={
-  paddingTop: "84px",
-  backgroundColor: "#d0ffef"
+	paddingTop: "84px",
+	backgroundColor: "#d0ffef"
 };
 
 export default class AdminNav extends Component {
@@ -18,26 +18,26 @@ export default class AdminNav extends Component {
 	};
 
   select = (index) => {
-    this.setState({selectedIndex: index})
-    this.props.swapAdminView(index);
+	this.setState({selectedIndex: index})
+	this.props.swapAdminView(index);
   };
 
   render() {
-    return (
-      <Paper zDepth={1}>
-        <BottomNavigation id="adminNav" style={style} selectedIndex={this.state.selectedIndex}>
-          <BottomNavigationItem
-            label="Admin"
-            icon={adminIcon}
-            onTouchTap={() => this.select(0)}
-          />
-          <BottomNavigationItem
-            label="Scraper"
-            icon={scraperIcon}
-            onTouchTap={() => this.select(1)}
-          />
-        </BottomNavigation>
-      </Paper>
-    );
+	return (
+	  <Paper zDepth={1}>
+		<BottomNavigation id="adminNav" style={style} selectedIndex={this.state.selectedIndex}>
+		<BottomNavigationItem
+		  label="Admin"
+		  icon={adminIcon}
+		  onTouchTap={() => this.select(0)}
+		 />
+		<BottomNavigationItem
+		  label="Scraper"
+		  icon={scraperIcon}
+		  onTouchTap={() => this.select(1)}
+		/>
+		</BottomNavigation>
+	  </Paper>
+	);
   }
 }

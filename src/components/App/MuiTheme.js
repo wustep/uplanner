@@ -1,8 +1,8 @@
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {
-  cyan500, cyan700, grey100, grey300, grey400, grey500,
-  white, darkBlack, fullBlack,
+	cyan500, cyan700, grey100, grey300, grey400, grey500,
+	white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fade} from 'material-ui/utils/colorManipulator';

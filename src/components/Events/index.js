@@ -18,25 +18,14 @@ function parseEvents(data) { // TODO: Make this into a legit component?
 }
 
 export default class Events extends React.Component {
-	getEvents(q="") {
-		if (q === "" && this.props.guestTags.length > 0) { // Not using search and tags are set -- use guest-events call
-			return fetch(apiURL + "/guest-events/" + this.props.guestTags.toString().replace(/,/g, "+")).then(function(response) { return response.json(); }).then(function(json) {
+	getEvents(q="", guestTags=[]) {
+		if (guestTags.length > 0) { // If user is changing tags, use this. Otherwise fetch normally by query
+			return fetch(apiURL + "/guest-events/" + guestTags.toString().replace(/,/g, "+")).then(function(response) { return response.json(); }).then(function(json) {
 				return json;
 			}); 
-		} else {
-			return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); }).then(function(json) {
-				return json;
-			});
 		}
-	}
-	constructor(props) {
-		super(props);
-		this.state = {
-			events: []
-		};
-		var self = this;
-		this.getEvents().then(function(data) {
-			self.setState({events: parseEvents(data)});
+		return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); }).then(function(json) {
+			return json;
 		});
 	}
 	repopulateEvents(query) {
@@ -45,8 +34,18 @@ export default class Events extends React.Component {
 			self.setState({events: parseEvents(data)});
 		});
 	}
-	componentWillReceiveProps() {
+	constructor(props) {
+		super(props);
+		this.state = {
+			events: []
+		};
 		this.repopulateEvents();
+	}
+	componentWillReceiveProps(nextProps) {
+		var self = this;
+		this.getEvents("", nextProps.guestTags).then(function(data) { // TODO: For some reason, keyword "Women's" works but not "Men's"... Check SQl later
+			self.setState({events: parseEvents(data)});
+		});
 	}
 	render() {
 		return (

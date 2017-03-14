@@ -28,9 +28,9 @@ router.get('/bigtags', cache('7 days'), (req,res) => {
 
 // Get "big tags" children of parent
 router.get('/bigtags/:parentid', cache('7 days'), (req, res) => {
-	let {parentid} = req.params;
+	let q = req.params;
 	if (!isNaN(parentid)) { // TODO Bad security check for int, improve later
-		sql.getBigTags(parentid, function(err, results) {
+		sql.getBigTags(q, function(err, results) {
 			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
 		});
@@ -41,9 +41,9 @@ router.get('/bigtags/:parentid', cache('7 days'), (req, res) => {
 
 // Get preferences of a user
 router.get('/pref/:userid', cache('30 minutes'), (req, res) => {
-	let {userid} = req.params;
+	let q = req.params;
 	if (!isNaN(userid)) {
-		sql.getPreferences(userid, function(err, results) {
+		sql.getPreferences(q, function(err, results) {
 			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
 		});
@@ -54,7 +54,7 @@ router.get('/pref/:userid', cache('30 minutes'), (req, res) => {
 
 // Get all events
 router.get('/events', cache('3 minutes'), (req, res) => {
-	sql.getEvents(null, function(err, results) {
+	sql.getEvents(function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
@@ -62,8 +62,8 @@ router.get('/events', cache('3 minutes'), (req, res) => {
 
 // Get events based on search query
 router.get('/events/:query', cache('10 minutes'), (req, res) => {
-	let query = req.params;
-	sql.searchEvents(decodeURIComponent(query.toLowerCase()), function(err, results) {
+	let q = req.params;
+	sql.searchEvents(q, function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});
@@ -71,8 +71,8 @@ router.get('/events/:query', cache('10 minutes'), (req, res) => {
 
 // Get events based on guests' tags
 router.get('/guest-events/:tags', cache('10 minutes'), (req, res) => {
-	let query = req.params;
-	sql.getEventsForGuest(query, function(err, results) {
+	let q = req.params;
+	sql.getEventsForGuest(q, function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});

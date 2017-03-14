@@ -7,7 +7,8 @@ var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API
 
 const style = {
 	bigTag: {
-	  	margin: "10px"
+		margin: "10px",
+		borderRadius: "4px"
 	},
 	bigTagLabel: {
 		textTransform: "none"
@@ -44,6 +45,15 @@ export default class GuestNav extends React.Component {
 		this.callApi = this.callApi.bind(this);
 		this.subTagClick = this.subTagClick.bind(this);
 	}
+	getInitialState() {
+		return JSON.parse(localStorage.getItem('GuestNav') || '{}');
+	}
+	componentDidMount() {
+		var self = this;
+		setInterval(function () {
+	 		localStorage.setItem('GuestNav', JSON.stringify(this.state));
+ 		}, 3000);
+	}
 	callApi(label, index) {
 		var that = this;
 		fetch(apiURL + '/bigtags/' + index).then(function(response) {
@@ -71,12 +81,12 @@ export default class GuestNav extends React.Component {
 	render() {
 		var self = this;	
 		var buttons = ["Academic", "Athletic", "Social"]; // TODO: Change this to not be hard-coded
-		
+			
 		return(
 		  <div id="guestNav">
-			<span id="interested-in">I am interested in...</span>
+			<span id="interested-in">I am interested in...</span><br className="visible-xs"/>
 			{buttons.map(function(name, index) {
-				return <RaisedButton key={index} id={index} label={name} onClick={self.callApi.bind(this, name, index + 1)} style={style.bigTag} labelStyle={style.bigTagLabels} />
+				return <RaisedButton key={index} id={index} label={name} onClick={self.callApi.bind(this, name, index + 1)} style={style.bigTag} labelStyle={style.bigTagLabel} />
 			})}
 			<br/>
 			<div style={style.subTagDiv}>

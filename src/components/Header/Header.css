@@ -45,6 +45,9 @@
     display: none;
 }
 
+.visible-xs {
+    display: none;
+}
 @media only screen and (max-width: 610px){           
     .app-logo {
         height: 64px;
@@ -54,5 +57,8 @@
     }
     .app-banner {
         display: none;
+    }
+    .visible-xs {
+        display: block;
     }
 }

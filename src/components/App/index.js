@@ -22,7 +22,8 @@ export default class App extends React.Component {
 		}
 	}
 	
-	guestPop(e) {
+	guestPop(subTags) {
+		console.log(subTags);
 		this.setState({ limit: true })
 	}
 

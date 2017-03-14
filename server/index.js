@@ -39,7 +39,7 @@ app.get('*', function(req, res) {
 });
 
 
-if (process.env.ssh_tunnel === true) {
+if (process.env.ssh_tunnel === "true") {
 	// Connect to SSH Tunnel for Namecheap's Remote MySQL
 	console.log("SSH: Trying connection");
 	var Client = require('ssh2').Client;

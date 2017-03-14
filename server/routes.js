@@ -27,9 +27,9 @@ router.get('/bigtags', cache('7 days'), (req,res) => {
 });
 
 // Get "big tags" children of parent
-router.get('/bigtags/:parentId', cache('7 days'), (req, res) => {
+router.get('/bigtags/:parentid', cache('7 days'), (req, res) => {
 	let q = req.params;
-	if (!isNaN(q["parentId"])) { // TODO Bad security check for int, improve later
+	if (!isNaN(q["parentid"])) { // TODO Bad security check for int, improve later
 		sql.getBigTags(q, function(err, results) {
 			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
@@ -42,7 +42,7 @@ router.get('/bigtags/:parentId', cache('7 days'), (req, res) => {
 // Get preferences of a user
 router.get('/pref/:userid', cache('30 minutes'), (req, res) => {
 	let q = req.params;
-	if (!isNaN(userid)) {
+	if (!isNaN(q["userid"])) {
 		sql.getPreferences(q, function(err, results) {
 			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);

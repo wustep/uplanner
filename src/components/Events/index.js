@@ -22,7 +22,7 @@ export default class Events extends React.Component {
 		if (q === "" && this.props.guestTags.length > 0) { // Not using search and tags are set -- use guest-events call
 			return fetch(apiURL + "/guest-events/" + this.props.guestTags.toString().replace(/,/g, "+")).then(function(response) { return response.json(); }).then(function(json) {
 				return json;
-			});
+			}); 
 		} else {
 			return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); }).then(function(json) {
 				return json;

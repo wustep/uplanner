@@ -45,15 +45,6 @@ export default class GuestNav extends React.Component {
 		this.callApi = this.callApi.bind(this);
 		this.subTagClick = this.subTagClick.bind(this);
 	}
-	getInitialState() {
-		return JSON.parse(localStorage.getItem('GuestNav') || '{}');
-	}
-	componentDidMount() {
-		var self = this;
-		setInterval(function () {
-	 		localStorage.setItem('GuestNav', JSON.stringify(this.state));
- 		}, 3000);
-	}
 	callApi(label, index) {
 		var that = this;
 		fetch(apiURL + '/bigtags/' + index).then(function(response) {

@@ -20,8 +20,8 @@ module.exports = {
 			console.log("SQL: Connected as " + db.threadId);
 		});
 	},
-	getPreferences: function(q, callback) {
-		db.query("SELECT * FROM `users_preferences` WHERE user_id = ?", [q], function(err, results) {
+	getPreferences: function(userid, callback) {
+		db.query("SELECT * FROM `users_preferences` WHERE user_id = ?", [userid], function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});
@@ -32,8 +32,8 @@ module.exports = {
 			callback(false, results);
 		});
 	},
-	getEventsForGuest: function(q, callback) {
-		let tags = q["tags"].split('+');
+	getEventsForGuest: function(t, callback) {
+		let tags = t.split('+');
 		if (!tags.some(isNaN)) { // Check that tags array is only numbers.
 			db.query("SELECT * FROM (SELECT DISTINCT `events`.`event_id`, `name`, `location`, `desc`, `source1`, `source2`, `time_start`, `time_end` FROM events, event_tags WHERE event_tags.event_id = events.event_id AND event_tags.tag IN (?) OR importance >= 3 ORDER by rand() LIMIT 50) AS T1 ORDER BY time_start ASC", [tags], function(err, results) {
 				if (err) { console.log(err); callback(true); return; }
@@ -52,16 +52,15 @@ module.exports = {
 			callback(false, results);
 		});
 	},*/
-	searchEvents: function(q, callback) {
-		let search = q["query"]
-		db.query("SELECT * FROM events WHERE MATCH (`name`,`location`,`desc`) AGAINST (? IN NATURAL LANGUAGE MODE) LIMIT 40", [search], function(err, results) {
+	searchEvents: function(query, callback) {
+		db.query("SELECT * FROM events WHERE MATCH (`name`,`location`,`desc`) AGAINST (? IN NATURAL LANGUAGE MODE) LIMIT 40", [query], function(err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});
 	},
-	getBigTags: function(q = 0, callback) {
+	getBigTags: function(parentid = 0, callback) {
 		// Get big categories
-		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", [q], function (err, results) {
+		db.query("SELECT `bigtag_id`, bigtags.`tag_id`, `name` FROM `bigtags`, `tags` WHERE bigtags.`tag_id` = tags.`tag_id` AND bigtags.`parent_tag_id` = ? ORDER BY bigtags.`parent_tag_id` ASC, bigtags.`bigtag_id` ASC;", [parentid], function (err, results) {
 			if (err) { console.log(err); callback(true); return; }
 			callback(false, results);
 		});

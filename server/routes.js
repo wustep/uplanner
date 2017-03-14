@@ -30,7 +30,7 @@ router.get('/bigtags', cache('7 days'), (req,res) => {
 router.get('/bigtags/:parentid', cache('7 days'), (req, res) => {
 	let {parentid} = req.params;
 	if (!isNaN(parentid)) { // TODO Bad security check for int, improve later
-		sql.getBigTags(q, function(err, results) {
+		sql.getBigTags(parentid, function(err, results) {
 			if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 			res.send(results);
 		});

@@ -1,0 +1,1 @@
+INSERT INTO `uplanner`.`event_tags` (`event_id`, `tag`)  SELECT event_id, (rand() * 15 + 1) FROM events;

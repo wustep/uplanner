@@ -6,12 +6,6 @@ import EventCard from './EventCard';
 
 var apiURL = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_API_PROD : process.env.REACT_APP_API_DEV; // TODO: This is a temp solution for distinguishing API urls
 
-function getEvents(q="") {
-	return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); }).then(function(json) {
-		return json;
-	});
-}
-
 function parseEvents(data) { // TODO: Make this into a legit component?
 	var out = [];
 	for (var i = 0; i < data.length; i++) {
@@ -24,34 +18,42 @@ function parseEvents(data) { // TODO: Make this into a legit component?
 }
 
 export default class Events extends React.Component {
+	getEvents(q="") {
+		if (q === "" && this.props.guestTags.length > 0) { // Not using search and tags are set -- use guest-events call
+			return fetch(apiURL + "/guest-events/" + this.props.guestTags.toString().replace(/,/g, "+")).then(function(response) { return response.json(); }).then(function(json) {
+				return json;
+			});
+		} else {
+			return fetch(apiURL + "/events/" + encodeURIComponent(q)).then(function(response) { return response.json(); }).then(function(json) {
+				return json;
+			});
+		}
+	}
 	constructor(props) {
 		super(props);
 		this.state = {
 			events: []
 		};
 		var self = this;
-		getEvents().then(function(data) {
+		this.getEvents().then(function(data) {
 			self.setState({events: parseEvents(data)});
 		});
 	}
 	repopulateEvents(query) {
 		var self = this;
-		getEvents(query).then(function(data) { // TODO: For some reason, keyword "Women's" works but not "Men's". Hmm...
+		this.getEvents(query).then(function(data) { // TODO: For some reason, keyword "Women's" works but not "Men's". Hmm...
 			self.setState({events: parseEvents(data)});
 		});
 	}
+	componentWillReceiveProps() {
+		this.repopulateEvents();
+	}
 	render() {
-		if (this.props.limit) {
-			return (
-				<div className="Events"><Search/>{this.state.events.slice(0,3)}</div>
-			);
-		} else {
-			return (
-				<div className="Events">
-					<Search repopulateEvents={this.repopulateEvents.bind(this)}/>
-					{this.state.events}
-				</div>
-			);
-		}
+		return (
+			<div className="Events">
+				<Search repopulateEvents={this.repopulateEvents.bind(this)}/>
+				{this.state.events}
+			</div>
+		);
 	}
 }

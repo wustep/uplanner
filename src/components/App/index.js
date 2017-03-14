@@ -18,13 +18,12 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			limit: false
+			guestTags: []
 		}
 	}
 	
 	guestPop(subTags) {
-		console.log(subTags);
-		this.setState({ limit: true })
+		this.setState({guestTags: subTags})
 	}
 
 	render() {
@@ -40,7 +39,7 @@ export default class App extends React.Component {
 						<AppTopBar />		
 						<GuestNav guestPop={this.guestPop.bind(this)}/>
 						<div className="app-intro" id='lowerHalf'>
-							<Events limit={this.state.limit} />
+							<Events guestTags={this.state.guestTags} />
 						</div>
 					</div>
 				</MuiTheme>

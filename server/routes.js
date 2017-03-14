@@ -62,8 +62,17 @@ router.get('/events', cache('3 minutes'), (req, res) => {
 
 // Get events based on search query
 router.get('/events/:query', cache('10 minutes'), (req, res) => {
-	let {query} = req.params;
+	let query = req.params;
 	sql.searchEvents(decodeURIComponent(query.toLowerCase()), function(err, results) {
+		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
+		res.send(results);
+	});
+});
+
+// Get events based on guests' tags
+router.get('/guest-events/:tags', cache('10 minutes'), (req, res) => {
+	let query = req.params;
+	sql.getEventsForGuest(query, function(err, results) {
 		if (err) { console.log("SQL: Error: " + err); res.send(500, "Server Error"); return; }
 		res.send(results);
 	});

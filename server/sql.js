@@ -32,6 +32,18 @@ module.exports = {
 			callback(false, results);
 		});
 	},
+	getEventsForGuest: function(query, callback) {
+		let tags = query["tags"].split('+');
+		if (!tags.some(isNaN)) { // Check that tags array is only numbers.
+			db.query("SELECT * FROM (SELECT DISTINCT `events`.`event_id`, `name`, `location`, `desc`, `source1`, `source2`, `time_start`, `time_end` FROM events, event_tags WHERE event_tags.event_id = events.event_id AND event_tags.tag IN (?) OR importance >= 3 ORDER by rand() LIMIT 50) AS T1 ORDER BY time_start ASC", [tags], function(err, results) {
+				if (err) { console.log(err); callback(true); return; }
+				callback(false, results);
+			});
+		} else {
+			console.log("SQL: API call getEventsforGuest stopped because non-numbers were found in tags.");
+			callback(true);
+		}
+	},
 	/* -- OLD Search Algorithim --
 	searchEvents: function(query, callback) { 
 		var search = '%' + query.toLowerCase() + '%';

@@ -245,14 +245,14 @@ INSERT INTO `events` (`event_id`, `name`, `location`, `desc`, `source1`, `source
 -- Table structure for table `event_tags`
 --
 
-CREATE TABLE IF NOT EXISTS `event_tags` (
-  `event_tag_id` int(11) NOT NULL,
-  `event_id` int(11) DEFAULT NULL,
-  `tag` int(11) DEFAULT NULL,
+CREATE TABLE `event_tags` (
+  `event_tag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `tag` int(11) NOT NULL,
   PRIMARY KEY (`event_tag_id`),
-  UNIQUE KEY `event_tag_id_UNIQUE` (`event_tag_id`),
-  UNIQUE KEY `event_id_UNIQUE` (`event_id`)
+  UNIQUE KEY `event_tag_id_UNIQUE` (`event_tag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 --
 -- Dumping data for table `event_tags`

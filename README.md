@@ -1,3 +1,5 @@
+![Uplanner logo](https://github.com/wustep/uplanner/blob/master/src/img/combined.png "logo")
+
 # UPlanner
 
 Personalized event digest platform for universities and colleges, originally started at HackOHIO 2016.
@@ -14,7 +16,7 @@ UPlanner is an events platform that:
 
 ### Tech
 
-- NodeJS
+- Node.js
 - Client, Scraper: React
 - Server: Express
 - Database: MySQL

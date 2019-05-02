@@ -1,6 +1,8 @@
 # UPlanner
 
-Personalized event digest platform for universities and colleges
+Personalized event digest platform for universities and colleges, originally started at HackOHIO 2016.
+
+Check out the [paper](https://github.com/wustep/uplanner/blob/master/_docs/UPlanner.pdf) or [poster](https://github.com/wustep/uplanner/blob/master/_docs/Poster.pdf)!
 
 ## Description
 
@@ -9,8 +11,6 @@ UPlanner is an events platform that:
 1. Scrapes multiple different platforms (Google Calendar, TeamUp, others) creating a comprehensive database of every public event on campus from lectures to concerts to sporting events
 2. Runs an API webserver allowing queries into the database, pulling events, tags, user preferences, etc.
 3. Runs a webserver that presents this information to the client and allows the user to provide preferences that personalize the events
-
-[Read the work-in-progress paper on UPlanner here.](https://go.osu.edu/uplanner)
 
 ### Tech
 
